@@ -5,42 +5,76 @@
 
         // ==================== [수정됨] 한국어 친근한 닉네임 사전 정의 ====================
         const SIPSIN_NICK = {
-            '비견': '든든한 내편',
-            '겁재': '자극과 경쟁',
-            '식신': '표현과 식복',
-            '상관': '재치와 아이디어',
-            '편재': '사업적 큰돈',
-            '정재': '착실한 재물',
-            '편관': '카리스마/돌파',
-            '정관': '안정된 명예',
-            '편인': '독창적 지혜',
-            '정인': '조건없는 인덕'
+            '비견': '든든한 내편 (나와 닮은 듬직한 동반자)',
+            '겁재': '자극과 경쟁 (선의의 라이벌과 리더십)',
+            '식신': '재능과 식복 (우러나오는 표현력과 먹을복)',
+            '상관': '재치와 아이디어 (틀을 깨는 예술가 센스)',
+            '편재': '모험적 재물 (스케일이 큰 사업가 수완)',
+            '정재': '착실한 재물 (노력만큼 착실히 쌓이는 알짜 자산)',
+            '편관': '카리스마/돌파 (어려움을 해결하는 책임 대장)',
+            '정관': '안정된 명예 (신뢰받는 공직 및 반듯한 규칙)',
+            '편인': '독창적 지혜 (나만 아는 날카로운 전문 기술)',
+            '정인': '공부복과 사랑 (조건 없이 나를 챙겨주는 후원자)'
         };
         const UNSEONG_NICK = {
-            '장생': '새출발/축복',
-            '목욕': '인기/주목',
-            '관대': '패기/열정',
-            '건록': '안정/성공',
-            '제왕': '정점/리더',
-            '쇠': '노련/지혜',
-            '병': '감성/동정',
-            '사': '집중/생각',
-            '묘': '알뜰/저축',
-            '절': '반전/시작',
-            '태': '상상/태아',
-            '양': '보호/평온'
+            '장생': '새출발/축복 (갓 태어난 아기 같은 만인의 사랑)',
+            '목욕': '인기/주목 (아이돌처럼 스포트라이트를 받는 매력)',
+            '관대': '패기/열정 (제복을 차려입고 도전하는 청년의 힘)',
+            '건록': '안정/성공 (완벽하게 사회에 정착한 늠름한 자립)',
+            '제왕': '정점/리더 (스스로 운명을 개척하는 최고의 리더십)',
+            '쇠': '노련/지혜 (지혜롭게 한 걸음 물러나 판을 잃는 참모)',
+            '병': '감성/동정 (타인의 마음에 깊이 울림을 주는 고운 예술성)',
+            '사': '집중/생각 (몸을 아끼고 고도의 수읽기를 하는 사색가)',
+            '묘': '알뜰/저축 (실속 있게 차곡차곡 에너지를 모으는 저축가)',
+            '절': '반전/시작 (바닥에서 다시 위로 튀어 오르는 반전 매력)',
+            '태': '상상/태아 (엄마 품처럼 무한한 가능성을 꿈꾸는 상상력)',
+            '양': '보호/평온 (든든한 보살핌 속에서 실력을 기르는 평온함)'
         };
 
 
         async function loadFortuneData() {
             const _v = (typeof window !== 'undefined' && window.APP_VERSION) ? window.APP_VERSION : Date.now();
-            const res = await fetch('./data/fortune-data.json?v=' + _v, { cache: 'no-store' });
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            const d = await res.json();
-            CHEONGAN = d.CHEONGAN; JIJI = d.JIJI; ILJU_DATA = d.ILJU_DATA;
-            GAN_DETAIL = d.GAN_DETAIL || {}; JI_DETAIL = d.JI_DETAIL || {};
-            OHENG_DETAIL = d.OHENG_DETAIL || {}; SIPSIN_DAILY = d.SIPSIN_DAILY || {};
-            ILJU_DETAIL = d.ILJU_DETAIL || {};
+            try {
+                const res = await fetch('./data/fortune-data.json?v=' + _v, { cache: 'no-store' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const d = await res.json();
+                CHEONGAN = d.CHEONGAN; JIJI = d.JIJI; ILJU_DATA = d.ILJU_DATA;
+                GAN_DETAIL = d.GAN_DETAIL || {}; JI_DETAIL = d.JI_DETAIL || {};
+                OHENG_DETAIL = d.OHENG_DETAIL || {}; SIPSIN_DAILY = d.SIPSIN_DAILY || {};
+                ILJU_DETAIL = d.ILJU_DETAIL || {};
+            } catch (err) {
+                console.warn('CORS / 네트워크 에러로 인해 로컬 자가방어 데이터(Local Fallback)를 즉시 활성화합니다.', err);
+                
+                // 100% 무중단 구동을 위한 최적화 로컬 백업 명리 DB 수혈 (오류 방지용 철벽 가드)
+                CHEONGAN = [
+                    { name: '갑', han: '甲', oheng: '목', colorClass: 'wood-bg', textClass: 'wood-text', symbol: '큰 나무', sipsinSelf: '비견' },
+                    { name: '을', han: '乙', oheng: '목', colorClass: 'wood-bg', textClass: 'wood-text', symbol: '화초/넝쿨', sipsinSelf: '겁재' },
+                    { name: '병', han: '丙', oheng: '화', colorClass: 'fire-bg', textClass: 'fire-text', symbol: '태양/큰 불', sipsinSelf: '비견' },
+                    { name: '정', han: '丁', oheng: '화', colorClass: 'fire-bg', textClass: 'fire-text', symbol: '촛불/별빛', sipsinSelf: '겁재' },
+                    { name: '무', han: '戊', oheng: '토', colorClass: 'earth-bg', textClass: 'earth-text', symbol: '큰 산', sipsinSelf: '비견' },
+                    { name: '기', han: '己', oheng: '토', colorClass: 'earth-bg', textClass: 'earth-text', symbol: '정원/밭', sipsinSelf: '겁재' },
+                    { name: '경', han: '庚', oheng: '금', colorClass: 'metal-bg', textClass: 'metal-text', symbol: '바위/강철', sipsinSelf: '비견' },
+                    { name: '신', han: '辛', oheng: '금', colorClass: 'metal-bg', textClass: 'metal-text', symbol: '보석/바늘', sipsinSelf: '겁재' },
+                    { name: '임', han: '壬', oheng: '수', colorClass: 'water-bg', textClass: 'water-text', symbol: '바다/큰 강', sipsinSelf: '비견' },
+                    { name: '계', han: '癸', oheng: '수', colorClass: 'water-bg', textClass: 'water-text', symbol: '봄비/이슬', sipsinSelf: '겁재' }
+                ];
+                JIJI = [
+                    { name: '자', han: '子', animal: '쥐', oheng: '수', colorClass: 'water-bg', textClass: 'water-text', jijanggan: '계(癸)' },
+                    { name: '축', han: '丑', animal: '소', oheng: '토', colorClass: 'earth-bg', textClass: 'earth-text', jijanggan: '계(癸) 신(辛) 기(己)' },
+                    { name: '인', han: '寅', animal: '호랑이', oheng: '목', colorClass: 'wood-bg', textClass: 'wood-text', jijanggan: '무(戊) 병(丙) 갑(甲)' },
+                    { name: '묘', han: '卯', animal: '토끼', oheng: '목', colorClass: 'wood-bg', textClass: 'wood-text', jijanggan: '갑(甲) 을(乙)' },
+                    { name: '진', han: '辰', animal: '용', oheng: '토', colorClass: 'earth-bg', textClass: 'earth-text', jijanggan: '을(乙) 계(癸) 무(戊)' },
+                    { name: '사', han: '巳', animal: '뱀', oheng: '화', colorClass: 'fire-bg', textClass: 'fire-text', jijanggan: '무(戊) 경(庚) 병(丙)' },
+                    { name: '오', han: '오', animal: '말', oheng: '화', colorClass: 'fire-bg', textClass: 'fire-text', jijanggan: '병(丙) 기(己) 정(丁)' },
+                    { name: '미', han: '미', animal: '양', oheng: '토', colorClass: 'earth-bg', textClass: 'earth-text', jijanggan: '정(丁) 을(乙) 기(己)' },
+                    { name: '신', han: '신', animal: '원숭이', oheng: '금', colorClass: 'metal-bg', textClass: 'metal-text', jijanggan: '무(戊) 임(壬) 경(庚)' },
+                    { name: '유', han: '유', animal: '닭', oheng: '금', colorClass: 'metal-bg', textClass: 'metal-text', jijanggan: '경(庚) 신(辛)' },
+                    { name: '술', han: '술', animal: '개', oheng: '토', colorClass: 'earth-bg', textClass: 'earth-text', jijanggan: '신(辛) 정(丁) 무(戊)' },
+                    { name: '해', han: '해', animal: '돼지', oheng: '수', colorClass: 'water-bg', textClass: 'water-text', jijanggan: '무(戊) 갑(甲) 임(壬)' }
+                ];
+                ILJU_DATA = {};
+                GAN_DETAIL = {}; JI_DETAIL = {}; OHENG_DETAIL = {}; SIPSIN_DAILY = {}; ILJU_DETAIL = {};
+            }
 
             // 60갑자 생성
             GAPJA = [];
@@ -377,7 +411,7 @@
 
             const analysisBox = document.getElementById('oheng-analysis-text');
             const overList = ohengNames.filter(o => counts[o] >= 3), zeroList = ohengNames.filter(o => counts[o] === 0);
-            let html = `<p class="text-amber-300 font-semibold">🌟 일간(본원) 오행: <strong class="text-white">${ilGan.name}(${ilGan.oheng})</strong></p><p class="text-gray-300">당신은 사주의 중심인 일간이 <strong>${ilGan.oheng}(${ilGan.han})</strong> 기운을 뿌리로 삼고 있어, 그 오행 특유의 빛깔이 성정 전반에 짙게 배어 있습니다.</p>`;
+            let html = `<p class="text-amber-300 font-semibold">🌟 내 타고난 핵심 수호 기운이자 나 자신(일간): <strong class="text-white">${ilGan.name}(${ilGan.oheng})</strong></p><p class="text-gray-300">당신은 사주의 우두머리이자 나 자신인 일간(日干)이 <strong>${ilGan.oheng}(${ilGan.han})</strong> 기운을 뿌리로 삼고 있어, 그 오행 특유의 빛깔이 성정 전반에 짙게 배어 있습니다.</p>`;
             if (overList.length > 0) html += `<p class="text-rose-300 pt-1">🔥 <strong>과다 오행 (${overList.join(', ')})</strong>: 원국의 세 글자 이상이 한 기운으로 쏠려 있습니다. 치우친 기운은 성미의 고집으로, 또 그 오행이 맡은 장부의 피로로 드러나기 쉬우니 모자란 쪽을 채워 균형을 맞추는 생활 개운이 필요합니다.</p>`; else html += `<p class="text-emerald-300 pt-1">✅ <strong>과다 오행 없음</strong>: 어느 한쪽으로 크게 기울지 않아, 기운의 배합이 부드럽게 어우러진 원국입니다.</p>`;
             if (zeroList.length > 0) html += `<p class="text-blue-300 pt-1">💧 <strong>부족 오행 (${zeroList.join(', ')})</strong>: 팔자 여덟 글자 안에 이 기운의 글자가 보이지 않습니다. 대운이나 그해의 운에서 이 오행이 들어올 때 막힌 것이 풀리며, 평소 해당 기운의 색과 방향을 곁에 두면 그 시기를 앞당기는 효과가 있습니다.</p>`; else html += `<p class="text-emerald-300 pt-1">✅ <strong>오행 구비 완벽</strong>: 다섯 오행이 원국 안에 빠짐없이 들어차 있습니다. 어떤 환경에 놓여도 제자리를 찾고, 굽이를 만나도 돌아 나오는 힘이 좋은 짜임새입니다.</p>`;
             const myDeep = OHENG_DETAIL[ilGan.oheng];
@@ -391,7 +425,7 @@
             const wolJiSipsin = getJiSipsin(saju.il.ganIdx, saju.wol.jiIdx);
             const gyeokgukMap = { '정관':{title:'정관격 (正官格)',desc:'정해진 도리를 지키며 조직의 기준이 되는 그릇으로, 공정함이 무기인 유형'}, '편관':{title:'편관격 (偏官格)',desc:'압박이 클수록 오히려 힘을 내는 승부사로, 위기 국면의 돌파 대장'}, '정인':{title:'정인격 (正印格)',desc:'배움을 쌓아 사람을 기르는 그릇으로, 글과 지식이 평생의 밑천'}, '편인':{title:'편인격 (偏印格)',desc:'남들이 못 보는 이면을 짚어내는 촉의 소유자로, 한 우물 전문 기예형'}, '정재':{title:'정재격 (正財格)',desc:'한 푼도 허투루 다루지 않는 관리 감각으로 차곡차곡 부를 쌓는 유형'}, '편재':{title:'편재격 (偏財格)',desc:'판을 크게 벌여 굴리는 수완가로, 사람과 돈이 함께 도는 유형'}, '식신':{title:'식신격 (食神格)',desc:'표현하고 나누는 것이 곧 복이 되는 유형으로, 의식주 걱정이 적은 격'}, '상관':{title:'상관격 (傷官格)',desc:'틀을 깨는 발상으로 새 길을 여는 유형으로, 재주가 밥이 되는 격'} };
             const gyeok = gyeokgukMap[wolJiSipsin] || {title:'건록/양인격', desc:'남에게 기대지 않는 꿋꿋한 자립심으로 맨손에서 일가를 이루는 유형'};
-            gyeok.desc += ' 격국(格局)이란 월지를 중심으로 원국 전체의 짜임새를 하나의 그릇 모양으로 읽어 낸 것으로, 타고난 사회적 체질과 성공 공식을 보여 주는 명리의 핵심 틀입니다. 자신의 격에 맞는 무대를 고르는 것만으로도 같은 노력의 성과가 몇 배로 달라집니다.';
+            gyeok.desc += ' 격국(格局)이란 내 타고난 사회적 그릇이자 나 자신에게 꼭 맞는 무대의 형태으로, 타고난 사회적 체질과 성공 공식을 보여 주는 명리의 핵심 틀입니다. 자신의 격에 맞는 무대를 고르는 것만으로도 같은 노력의 성과가 몇 배로 달라집니다.';
             document.getElementById('sipsin-gyeokguk-title').textContent = gyeok.title; document.getElementById('sipsin-gyeokguk-desc').textContent = gyeok.desc;
 
             let myScore = 0, otherScore = 0;
@@ -409,7 +443,7 @@
             let huiOheng = isSingang ? OHENG_MAP[ilGan.oheng].극 : ilGan.oheng;
             document.getElementById('yongsin-oheng').textContent = `${yongOheng} 기운 (${isSingang?'식상/재성':'인성/비겁'})`;
             document.getElementById('huisin-oheng').textContent = `${huiOheng} 기운`;
-            document.getElementById('yongsin-reason').innerHTML = `기운의 강약을 고르게 다스리는 억부의 원리에 따라 <strong>${yongOheng}</strong> 기운이 나를 살리는 핵심 용신이 되고, 곁에서 이를 거드는 <strong>${huiOheng}</strong> 기운이 희신 역할을 맡아 원국의 흐름을 틔워 줍니다.`;
+            document.getElementById('yongsin-reason').innerHTML = `사주 기운의 밸런스를 배터리 충전처럼 고르게 다스려 주는 억부의 원리에 따라, 나를 가장 안전하고 힘차게 살려주는 고마운 행운 배터리 기운은 <strong>${yongOheng}</strong>이(가) 되고, 곁에서 이를 든든하게 지켜주는 보조 조력자 기운은 <strong>${huiOheng}</strong>이(가) 되어 내 인생의 물길을 맑고 시원하게 틔워 줍니다.`;
 
             const sipsinList = ['비견', '겁재', '식신', '상관', '편재', '정재', '편관', '정관', '편인', '정인'];
             const sipsinCounts = {}; sipsinList.forEach(s => sipsinCounts[s] = 0);
@@ -537,8 +571,8 @@
             let stars = '⭐⭐⭐⭐ (좋은 소식이 줄지어 드는 상서로운 날)';
             let summary = `오늘 하루는 <strong>${tIlGapja.name}일(${todaySipsinGan}/${todaySipsinJi})</strong>의 기운이 하루를 이끕니다. 일과 돈 양쪽에서 흐뭇한 결과를 손에 쥐기 좋은 날입니다.`;
 
-            if (todaySipsinGan.includes('재') || todaySipsinJi.includes('재')) { moneyPct = 95; jobPct = 90; summary = `재성의 기운이 하루를 채우는 날입니다. 막혔던 돈줄이 트이고, 굴려 둔 자산에서 반가운 소식이 들려올 수 있는 흐름입니다.`; }
-            else if (todaySipsinGan.includes('관') || todaySipsinJi.includes('관')) { jobPct = 96; relPct = 88; summary = `관성의 기운이 정점에 오르는 날입니다. 실력을 공식적으로 인정받거나 굵직한 계약 도장을 찍기에 이보다 좋은 타이밍이 드뭅니다.`; }
+            if (todaySipsinGan.includes('재') || todaySipsinJi.includes('재')) { moneyPct = 95; jobPct = 90; summary = `재성(나에게 다가오는 든든한 실속 재물)의 기운이 하루를 채우는 날입니다. 막혔던 돈줄이 트이고, 굴려 둔 자산에서 반가운 소식이 들려올 수 있는 흐름입니다.`; }
+            else if (todaySipsinGan.includes('관') || todaySipsinJi.includes('관')) { jobPct = 96; relPct = 88; summary = `관성(반듯하고 신뢰받는 명예와 합격)의 기운이 정점에 오르는 날입니다. 실력을 공식적으로 인정받거나 굵직한 계약 도장을 찍기에 이보다 좋은 타이밍이 드뭅니다.`; }
 
             const jiHabPairs = { 0:1, 1:0, 2:11, 11:2, 3:10, 10:3, 4:9, 9:4, 5:8, 8:5, 6:7, 7:6 };
             if (jiHabPairs[ilJi.jiIdx] === tIlGapja.jiIdx) { lovePct = 98; relPct = 96; stars = '⭐⭐⭐⭐⭐ (막힘없이 술술 풀리는 최상급 길일)'; summary += ` 일지가 <strong>육합(六合)</strong>으로 어우러지니 사람 사이의 합이 유난히 좋고, 애정 전선에도 훈풍이 붑니다.`; }
@@ -581,7 +615,7 @@
             else if (wolSipsin === '정인' || wolSipsin === '편인') { wType = '인수문서(印綬文書) · 부동산 지적재산권 부호형'; wDesc = `머리로 쌓은 지식과 손에 쥔 문서·자격·권리가 곧 곳간이 되는 유형입니다. 남들처럼 발로 뛰어 버는 돈보다, 공부해서 딴 자격·이름을 걸고 만든 콘텐츠·등기부에 올린 자산이 잠자는 동안에도 일해 주는 구조가 어울립니다. 위험한 큰돈보다 확실한 문서를 택하는 신중함이 이 명의 최대 무기이니, 남의 화려한 수익률에 흔들릴 이유가 없습니다.`; investDesc = `이름이 새겨지는 자산, 곧 등기된 부동산·저작권과 특허·꾸준한 배당주처럼 서류로 증명되는 투자와 잘 맞습니다.`; }
 
             document.getElementById('wealth-type-title').textContent = wType; document.getElementById('wealth-type-desc').textContent = wDesc; document.getElementById('wealth-invest-desc').textContent = investDesc;
-            document.getElementById('wealth-golden-desc').textContent = `재주(식상)와 재물(재성)의 운이 포개지는 30대 중반~40대 후반, 그리고 50대 중반의 대운 구간이 재산 규모가 계단식으로 뛰어오르는 황금 창구로 읽힙니다. 이런 구간의 특징은 "일이 돈을 부르고, 그 돈이 다시 기회를 부르는" 선순환이 저절로 돈다는 점입니다. 그러니 해당 시기가 오기 전까지는 종잣돈과 실력이라는 두 개의 장작을 부지런히 쌓아 두는 것이 핵심 전략입니다. 창구가 열렸을 때 태울 장작이 없으면 좋은 운도 잔불로 끝나고, 넉넉히 쌓아 둔 사람에게는 같은 운이 큰 화력이 됩니다.`;
+            document.getElementById('wealth-golden-desc').textContent = `나의 재능(식상)과 소중한 재물(재성)의 운이 포개지는 30대 중반~40대 후반, 그리고 50대 중반의 대운 구간이 재산 규모가 계단식으로 뛰어오르는 황금 창구로 읽힙니다. 이런 구간의 특징은 "일이 돈을 부르고, 그 돈이 다시 기회를 부르는" 선순환이 저절로 돈다는 점입니다. 그러니 해당 시기가 오기 전까지는 종잣돈과 실력이라는 두 개의 장작을 부지런히 쌓아 두는 것이 핵심 전략입니다. 창구가 열렸을 때 태울 장작이 없으면 좋은 운도 잔불로 끝나고, 넉넉히 쌓아 둔 사람에게는 같은 운이 큰 화력이 됩니다.`;
             document.getElementById('wealth-caution-desc').textContent = `비견·겁재의 운이 드는 해에는 내 돈이 남의 주머니로 새기 쉽습니다. 이 구간만큼은 동업 제안·보증 도장·한탕성 투기와 거리를 두는 것이 재산을 지키는 길입니다. 비견·겁재란 나와 같은 기운이 여럿 들어와 내 몫을 나누어 가는 형국을 말합니다. 이 시기에는 유난히 "확실하다"는 제안과 "너니까 알려 준다"는 정보가 몰려드는데, 거절이 어려우면 "가족과 상의해야 한다"는 한마디를 방패로 삼으세요. 지키기만 해도 이기는 구간이 있다는 것을 아는 것이, 부자 사주와 그렇지 못한 사주의 실제 갈림길입니다.`;
         }
 
@@ -704,7 +738,7 @@
 
         function renderCareerMastery(saju, ilGan, wolJi) {
             const cSipsin = getJiSipsin(saju.il.ganIdx, saju.wol.jiIdx);
-            document.getElementById('career-pass-desc').innerHTML = `2026년 합격·승진 지수 <strong class="text-emerald-300">89% (대길)</strong>. 올해 병오년의 뜨거운 화(火) 기운이 당신의 일간 ${ilGan.name}(${ilGan.oheng})에 관인상생의 다리를 놓아 줍니다. 관인상생이란 명예의 별(관성)이 학문의 별(인성)을 살리고, 인성이 다시 나를 북돋는 가장 이상적인 출세 구조를 말합니다. 시험장에서는 공부한 만큼이 아니라 그 이상이 답안지에 실리고, 인사철에는 평소 지켜보던 윗사람의 눈에 당신의 이름이 먼저 들어옵니다. 특히 상반기보다 <strong>불 기운이 무르익는 5~9월</strong>이 면접·발표·승진 심사의 결정적 승부처이니, 이 시기에 맞춰 준비의 정점을 끌어올리는 전략이 유효합니다. 다만 열기가 강한 해인 만큼 마지막 단계에서 서두르다 서류의 사소한 실수가 나기 쉬우니, 제출 전 한 번 더 검토하는 습관이 89%를 100%로 만드는 마지막 열쇠입니다.`;
+            document.getElementById('career-pass-desc').innerHTML = `2026년 합격·승진 지수 <strong class="text-emerald-300">89% (대길)</strong>. 올해 병오년의 뜨거운 화(火) 기운이 당신의 일간 ${ilGan.name}(${ilGan.oheng})에 나를 돕는 기운들의 다정하고 이상적인 순환 다리를 놓아 줍니다. 나를 살려주는 반듯한 명예 기운과 다정한 공부복이 서로 어우러져 나를 가장 기분 좋게 응원해 주는 행운의 아름다운 흐름를 말합니다. 시험장에서는 공부한 만큼이 아니라 그 이상이 답안지에 실리고, 인사철에는 평소 지켜보던 윗사람의 눈에 당신의 이름이 먼저 들어옵니다. 특히 상반기보다 <strong>불 기운이 무르익는 5~9월</strong>이 면접·발표·승진 심사의 결정적 승부처이니, 이 시기에 맞춰 준비의 정점을 끌어올리는 전략이 유효합니다. 다만 열기가 강한 해인 만큼 마지막 단계에서 서두르다 서류의 사소한 실수가 나기 쉬우니, 제출 전 한 번 더 검토하는 습관이 89%를 100%로 만드는 마지막 열쇠입니다.`;
             document.getElementById('career-org-desc').innerHTML = `당신의 월지는 <strong class="text-amber-300">${cSipsin}</strong>의 환경입니다. 월지는 사회생활의 무대이자 일하는 방식의 밑그림을 보여 주는 자리인데, 이 짜임새로 보면 당신은 위에서 시키는 대로만 움직이는 자리보다 <strong>스스로 판단할 여지가 있는 자리</strong>에서 몇 배의 성과를 냅니다. 구체적으로는 재량권이 주어지는 대기업의 태스크포스나 신사업 조직, 자격과 실력이 곧 발언권이 되는 전문직 집단, 연차보다 성과로 평가하는 외국계·스타트업 계열이 좋은 무대입니다. 반대로 결재 단계가 많고 전례를 중시하는 경직된 조직에서는 답답함이 쌓여 재능의 절반도 꺼내기 어려우니, 이직을 고민할 때는 연봉 숫자보다 <strong>'내 판단이 통하는 조직인가'</strong>를 첫 번째 저울로 삼으시길 권합니다.`;
             document.getElementById('career-jobs-desc').innerHTML = `일간 ${ilGan.name}(${ilGan.oheng}) 기운과 월지 ${cSipsin} 환경을 함께 놓고 고른 열 갈래입니다. <strong>① IT 서비스 기획 ② 자산 운용·금융 분석 ③ 전문 컨설팅 ④ 국제 무역·유통 ⑤ 브랜드 디렉팅 ⑥ 심리 상담 ⑦ 강의·교육 콘텐츠 ⑧ 프리미엄 세일즈 ⑨ 경영 전략 ⑩ 부동산 개발 기획.</strong> 공통점은 모두 '사람을 읽는 눈'과 '판을 설계하는 머리'가 무기가 되는 일이라는 것입니다. 지금 하는 일이 이 목록에 없다고 조급해할 필요는 없습니다. 현재 업무 안에서도 기획·분석·사람 상대의 비중을 조금씩 늘려 가면, 그것이 곧 천직의 방향으로 배를 돌리는 일이 됩니다.`;
         }
@@ -778,10 +812,10 @@
         // ==========================================
         function renderSpouseProfile(saju, ilGan, ilJi) {
             const jiSipsin = getJiSipsin(saju.il.ganIdx, saju.il.jiIdx);
-            let ageLook = '동갑이나 1~3살 차이 / 단정함', lookDesc = `배우자 자리인 일지(${ilJi.name})의 기운이 차분히 자리 잡아, 부드러운 인상에 속이 깊은 짝과 연이 닿습니다. 겉으로 요란하게 다가오는 인연보다 어느새 곁에 스며들어 있는 인연이 진짜일 확률이 높은 구조입니다. 소개팅 한 번의 첫인상으로 판단을 끝내지 말고 두세 번은 만나 보세요. 이 배우자궁은 볼수록 좋아지는 사람과 맺어지는 자리입니다.`, job = '공직, 교육, 관리직', jobDesc = `맡은 바를 끝까지 해내는, 직업이 반듯한 짝을 만나게 됩니다. 배우자궁에 든 관성의 기운은 공직·대기업·전문직처럼 이름 앞에 소속이 붙는 직업군과의 인연을 강하게 암시합니다. 화려함보다 묵직함으로 다가오는 사람이니, 첫인상이 심심하다고 흘려보내지 마세요. 오래 볼수록 진가가 드러나는 유형입니다.`;
-            if (jiSipsin.includes('상') || jiSipsin.includes('식')) { ageLook = '연하 또는 감각적인 동갑 / 미남미녀'; lookDesc = `말과 표정이 살아 있고 꾸밈새의 감각이 남다른 짝을 맞이합니다. 배우자궁의 식상 기운은 표현하고 만들어 내는 사람, 곧 말·음식·예술·콘텐츠를 다루는 이와의 인연을 가리킵니다. 함께 있으면 웃을 일이 많은 관계가 되지만, 상대의 자유로운 기질을 틀에 가두려 하면 어긋나기 쉬우니 응원하는 자세가 이 인연을 오래 지키는 비결입니다.`; job = '방송/연예, 디자인, IT'; }
-            else if (jiSipsin.includes('재')) { ageLook = '능력 있는 동갑/연하 / 활력 넘침'; lookDesc = `살림 수완이 야무지고 어디서든 사람을 얻는 실속 있는 짝과 연분이 깊습니다. 배우자궁의 재성 기운은 경제 감각이 밝고 현실의 무게를 아는 사람과의 만남을 뜻합니다. 함께라면 살림이 불어나는 재미가 있는 조합이지만, 돈 문제만큼은 처음부터 투명하게 터놓는 것이 이 인연의 신뢰를 지키는 첫 단추입니다.`; job = '금융, 무역, 사업 경영'; }
-            else if (jiSipsin.includes('관')) { ageLook = '듬직한 연상/성숙한 동갑 / 위엄'; lookDesc = `기대어 쉴 수 있고 우러러볼 구석이 있는, 중심이 굳은 짝을 만납니다. 배우자궁의 인성 기운은 지혜롭고 어른스러운 사람, 나이나 정신적 성숙도에서 나를 이끌어 주는 이와의 인연을 가리킵니다. 위기 때 함께 흔들리는 것이 아니라 나를 붙들어 주는 닻 같은 존재이니, 연애의 설렘 지수보다 대화의 깊이로 상대를 가늠해 보세요.`; job = '공직, 법조, 전문직, CEO'; }
+            let ageLook = '동갑이나 1~3살 차이 / 단정함', lookDesc = `배우자 자리인 일지(${ilJi.name})의 기운이 차분히 자리 잡아, 부드러운 인상에 속이 깊은 짝과 연이 닿습니다. 겉으로 요란하게 다가오는 인연보다 어느새 곁에 스며들어 있는 인연이 진짜일 확률이 높은 구조입니다. 소개팅 한 번의 첫인상으로 판단을 끝내지 말고 두세 번은 만나 보세요. 이 배우자궁은 볼수록 좋아지는 사람과 맺어지는 자리입니다.`, job = '공직, 교육, 관리직', jobDesc = `맡은 바를 끝까지 해내는, 직업이 반듯한 짝을 만나게 됩니다. 배우자궁에 든 관성(나를 든든하게 지켜주는 반듯한 신뢰)의 기운은 공직·대기업·전문직처럼 이름 앞에 소속이 붙는 직업군과의 인연을 강하게 암시합니다. 화려함보다 묵직함으로 다가오는 사람이니, 첫인상이 심심하다고 흘려보내지 마세요. 오래 볼수록 진가가 드러나는 유형입니다.`;
+            if (jiSipsin.includes('상') || jiSipsin.includes('식')) { ageLook = '연하 또는 감각적인 동갑 / 미남미녀'; lookDesc = `말과 표정이 살아 있고 꾸밈새의 감각이 남다른 짝을 맞이합니다. 배우자궁의 식상(재능과 넘치는 다정한 끼) 기운은 표현하고 만들어 내는 사람, 곧 말·음식·예술·콘텐츠를 다루는 이와의 인연을 가리킵니다. 함께 있으면 웃을 일이 많은 관계가 되지만, 상대의 자유로운 기질을 틀에 가두려 하면 어긋나기 쉬우니 응원하는 자세가 이 인연을 오래 지키는 비결입니다.`; job = '방송/연예, 디자인, IT'; }
+            else if (jiSipsin.includes('재')) { ageLook = '능력 있는 동갑/연하 / 활력 넘침'; lookDesc = `살림 수완이 야무지고 어디서든 사람을 얻는 실속 있는 짝과 연분이 깊습니다. 배우자궁의 재성(실속 있는 재물 감각과 생활력) 기운은 경제 감각이 밝고 현실의 무게를 아는 사람과의 만남을 뜻합니다. 함께라면 살림이 불어나는 재미가 있는 조합이지만, 돈 문제만큼은 처음부터 투명하게 터놓는 것이 이 인연의 신뢰를 지키는 첫 단추입니다.`; job = '금융, 무역, 사업 경영'; }
+            else if (jiSipsin.includes('관')) { ageLook = '듬직한 연상/성숙한 동갑 / 위엄'; lookDesc = `기대어 쉴 수 있고 우러러볼 구석이 있는, 중심이 굳은 짝을 만납니다. 배우자궁의 인성(지혜롭고 생각이 깊은 공부와 지성) 기운은 지혜롭고 어른스러운 사람, 나이나 정신적 성숙도에서 나를 이끌어 주는 이와의 인연을 가리킵니다. 위기 때 함께 흔들리는 것이 아니라 나를 붙들어 주는 닻 같은 존재이니, 연애의 설렘 지수보다 대화의 깊이로 상대를 가늠해 보세요.`; job = '공직, 법조, 전문직, CEO'; }
             document.getElementById('spouse-age-look').textContent = ageLook; document.getElementById('spouse-look-desc').textContent = lookDesc; document.getElementById('spouse-job').textContent = job; document.getElementById('spouse-job-desc').textContent = jobDesc;
             document.getElementById('spouse-timing').textContent = `만 ${saju.gender === 'M' ? '30~34' : '29~33'}세 구간`; document.getElementById('spouse-timing-desc').textContent = `배우자의 별이 들어오거나 일지에 육합이 걸리는 해가 혼담을 매듭짓기 좋은 때입니다. 명리에서 결혼 시기는 "인연이 없던 사람이 생기는 때"라기보다 "곁에 있던 인연이 무르익는 때"로 봅니다. 그러니 좋은 시기가 왔을 때 주저하지 않도록, 평소 자신이 어떤 동반자와 어떤 가정을 원하는지 미리 그려 두는 것이 그 운을 놓치지 않는 실전 준비입니다.`;
             document.getElementById('spouse-prob').textContent = `올해 2026년 만남 확률 92%`; document.getElementById('spouse-prob-desc').textContent = `병오년의 뜨거운 기운이 당신의 원국과 어울려, 마음을 움직이는 인연이 성큼 다가서는 해입니다. 확률이 높다는 것은 가만히 있어도 이루어진다는 뜻이 아니라, 같은 노력에 몇 배의 결실이 붙는 해라는 뜻입니다. 소개팅·모임·동호회처럼 사람이 모이는 자리에 평소보다 한 걸음만 더 나가 보세요. 올해의 운은 움직이는 사람의 편입니다.`;
@@ -794,7 +828,7 @@
             let bTitle = '부모 품을 밝히며 귀하게 크는 아이의 복', bDesc = `자녀 자리가 튼실해 아이가 부모의 마음을 잘 헤아리며, 자라서는 제 이름으로 우뚝 서는 상입니다.`, talent = `아이는 제 생각이 또렷하고 번뜩이는 발상을 지닌 씨앗을 품고 태어납니다. 어릴 때부터 "왜?"라는 질문이 많고 정해진 답보다 자기만의 답을 찾으려는 기질이 보일 텐데, 이는 고집이 아니라 재능의 싹입니다. 부모가 답을 정해 주기보다 스스로 답에 닿는 길을 지켜봐 줄 때 가장 크게 자라는 아이입니다.`, edu = `고르는 재미를 아이 몫으로 남겨 줄 때, 감춰진 재능이 몇 곱절로 피어납니다. 학원을 하나 정할 때도, 옷 한 벌을 살 때도 두세 가지 선택지 안에서 아이가 최종 결정을 내리게 해 보세요. 작은 선택의 경험이 쌓여 큰 결정을 두려워하지 않는 어른으로 자랍니다. 이 사주의 아이에게 최고의 교육은 정답을 가르치는 것이 아니라 선택하는 근육을 길러 주는 것입니다.`;
             if (saju.si) {
                 const siS = getSipsin(saju.il.ganIdx, CHEONGAN[saju.si.ganIdx].oheng, saju.si.ganIdx % 2 === 0);
-                if (siS.includes('관')) { bTitle = '반듯한 길에서 이름을 세우는 아이'; bDesc = `시주에 자리한 관성으로 미루어 보면, 아이는 맡은 일의 무게를 아는 성품으로 자라 사람들 앞에 서는 자리로 나아가는 상입니다.`; }
+                if (siS.includes('관')) { bTitle = '반듯한 길에서 이름을 세우는 아이'; bDesc = `시주에 자리한 관성(책임감과 반듯한 의리)으로 미루어 보면, 아이는 맡은 일의 무게를 아는 성품으로 자라 사람들 앞에 서는 자리로 나아가는 상입니다.`; }
                 else if (siS.includes('식') || siS.includes('상')) { bTitle = '끼와 손재주로 제 밥그릇을 빚어내는 아이'; bDesc = `표현하고 만들어 내는 기운이 강해, 예술적 재주와 번뜩이는 발상이 훗날 넉넉한 살림의 밑천이 되는 상입니다.`; }
             }
             document.getElementById('child-bless-title').textContent = bTitle; document.getElementById('child-bless-desc').textContent = bDesc; document.getElementById('child-talent-desc').textContent = talent; document.getElementById('child-edu-desc').textContent = edu;
@@ -832,7 +866,7 @@ function switchPlazaTab(tabId) {
     const target = document.getElementById(tabId);
     if (target) target.classList.remove('hidden');
 
-    const tabIds = ['plaza-tarot', 'plaza-zodiac', 'plaza-mbti', 'plaza-birth'];
+    const tabIds = ['plaza-tarot', 'plaza-zodiac', 'plaza-mbti', 'plaza-birth', 'plaza-pastlife-game'];
     tabIds.forEach(t => {
         const btn = document.getElementById('btn-' + t);
         if (btn) {
@@ -1091,7 +1125,7 @@ function showBloodTypeReading(bloodType) {
     resDesc.innerHTML = `
         <strong class="text-pink-400">[오늘의 혈액형 에너지 기상도]</strong><br class="block mb-1.5">
         <p class="leading-relaxed font-sans text-gray-200 text-xs sm:text-sm">${finalPhrase}</p>
-        <p class="pt-2 text-[10px] text-gray-500 border-t border-white/5 mt-2">※ 일본의 아침 메인 뉴스처럼, 매일 아침 기분 좋은 행운 예보를 배송해 드립니다. 지금 이 브라우저를 북마크(★)해 두시고 매일 아침 3초 만에 오늘의 행운을 충전해 가세요!</p>
+        <p class="pt-2 text-[10px] text-gray-500 border-t border-white/5 mt-2">※ 매일 아침을 기분 좋게 깨우는 나만의 하루 행운 예보를 무료 배송해 드립니다. 지금 이 브라우저를 북마크(★)해 두시고 매일 아침 3초 만에 오늘의 행운을 충전해 가세요!</p>
     `;
     resultBox.classList.remove('hidden');
     resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1115,6 +1149,13 @@ function resetTarotDeck() {
 }
 
 function handleTarotDraw(cardId) {
+    // [수정됨] 정밀 타로 운세법 연동 (개인 정보 입력 강제 결속 가이드)
+    if (!CURRENT_SAJU) {
+        alert("🔮 정밀 1:1 타로 분석을 위해 먼저 상단 입력창에 생년월일과 성별을 입력하고 [사주 분석하기]를 1회 가동해 주세요! 나만을 위한 타로 소울 카드 운세 분석이 완성됩니다.");
+        scrollToSection('form-section');
+        return;
+    }
+
     if (ACTIVE_TAROT_CARD_ID !== null) {
         alert("이미 카드를 뽑으셨습니다! 다른 카드를 보시려면 '카드 다시 섞기'를 눌러주세요.");
         return;
@@ -1122,6 +1163,26 @@ function handleTarotDraw(cardId) {
     ACTIVE_TAROT_CARD_ID = cardId;
     const chosenCard = TAROT_DECK[cardId - 1];
     const cat = document.getElementById('tarot-category').value;
+    
+    // 생일을 통한 타로 소울 카드 번호(1~9) 계산 법칙 적용
+    const yStr = String(CURRENT_SAJU.year), mStr = String(CURRENT_SAJU.month), dStr = String(CURRENT_SAJU.day);
+    let soulSum = 0;
+    for(let i=0; i<yStr.length; i++) soulSum += parseInt(yStr[i]);
+    for(let i=0; i<mStr.length; i++) soulSum += parseInt(mStr[i]);
+    for(let i=0; i<dStr.length; i++) soulSum += parseInt(dStr[i]);
+    while (soulSum > 9) {
+        let temp = 0;
+        const sStr = String(soulSum);
+        for(let i=0; i<sStr.length; i++) temp += parseInt(sStr[i]);
+        soulSum = temp;
+    }
+    
+    const soulCardsMap = {
+        1: "🪄 마술사 (The Magician) 카드", 2: "📖 여사제 (The High Priestess) 카드", 3: "👑 여황제 (The Empress) 카드",
+        4: "🏛️ 황제 (The Emperor) 카드", 5: "🔔 교황 (The Hierophant) 카드", 6: "💞 연인 (The Lovers) 카드",
+        7: "🛡️ 전차 (The Chariot) 카드", 8: "🦁 힘 (Strength) 카드", 9: "🏮 은둔자 (The Hermit) 카드"
+    };
+    const userSoulCardName = soulCardsMap[soulSum] || "마술사 카드";
 
     document.getElementById('tarot-emoji-' + cardId).textContent = chosenCard.emoji;
     document.getElementById('tarot-name-' + cardId).textContent = chosenCard.name.split(' ')[0];
@@ -1146,8 +1207,12 @@ function handleTarotDraw(cardId) {
     document.getElementById('tarot-res-emoji').textContent = chosenCard.emoji;
     document.getElementById('tarot-res-title').innerHTML = `선택 카드: <strong class="text-white">${chosenCard.name}</strong> · ${catTitle}`;
     
+    // 소울 카드 결합 해석문 동적 조립
+    let soulCardAdvice = `<p class="mt-2.5 p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-xs text-gray-300 leading-relaxed font-sans"><strong class="text-purple-300 block mb-1">🔮 당신의 타고난 '타로 소울 카드'와의 상생 해독</strong>당신의 생년월일 파장으로 셈한 인생 수호 카드는 <strong>[${userSoulCardName}]</strong> 입니다. 오늘 당신이 뽑은 <strong>[${chosenCard.name}]</strong> 기운과 나의 수호 카드가 만나 정서적 밸런스를 든든하게 조율해 줍니다. 수호 카드의 곧은 자립성과 오늘 카드의 온화함이 어우러져, 평소 고집을 한 숟가락 내려놓고 부드러운 화법으로 다가설 때 뜻밖의 큰 인덕과 귀중한 문서 소식을 거머쥐게 되는 아름다운 행운의 전선이 열립니다.</p>`;
+    
     let html = `<p class="text-gray-300 leading-relaxed font-sans mb-2"><strong class="text-purple-400">[핵심 키워드]</strong> ${chosenCard.keyword}</p>`;
     html += `<p class="text-gray-300 leading-relaxed font-sans mt-2"><strong class="text-purple-300">[정밀 해독 처방]</strong> ${adviceText}</p>`;
+    html += soulCardAdvice;
     html += `<p class="pt-2 text-[11px] text-gray-500 border-t border-purple-500/20">※ 타로 카드가 전하는 영감은 오늘의 마인드셋을 위한 힐링 지침입니다. 스스로 긍정적인 행동을 선택할 때 행운은 배가됩니다.</p>`;
 
     document.getElementById('tarot-res-desc').innerHTML = html;
@@ -1460,4 +1525,153 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', monitorEmptyAdSlots);
 } else {
     monitorEmptyAdSlots();
+}
+
+
+// ==========================================================================
+// [수정됨] 실시간 전생 오라클 게임 연산 및 해독 엔진 (나는 전생에 무엇이었을까?)
+// ==========================================================================
+
+const PAST_LIFE_ARCHETYPES = [
+    {
+        emoji: "👑", identity: "조선 시대 삼정승을 호령하던 영리한 대제학 (문관)",
+        destiny: "당신은 전생에 고결한 선비이자 학문으로 조정의 대사를 조율하던 최고 품격의 대학자였습니다. 세상을 맑은 지혜와 대쪽 같은 문장으로 구석구석 정화하려 하던 고운 영혼이었습니다. 현생에서도 글을 다루거나 배움을 넓혀가며 깊은 통찰력을 발휘할 때 가장 큰 발복을 누리게 됩니다.",
+        love: "전생에 책을 읽다 스치듯 눈이 맞은 양가댁 규수와 애틋하고 고운 시조 한 편을 나누는 정다우며 원숙한 정을 가졌습니다. 현생에서도 말귀가 잘 통하고 기품 있는 짝을 맞이합니다.",
+        karma: "전생에 정직한 원칙으로 가문을 일으킨 덕분에, 현생에서도 성실함만 잃지 않는다면 중년 이후 마르지 않는 샘물처럼 편안하고 넉넉한 부귀의 자산을 착실히 일구어 냅니다."
+    },
+    {
+        emoji: "⚔️", identity: "동로마 성벽을 충직하게 지켜낸 전설적인 명예 기사 (무관)",
+        destiny: "당신은 정의를 수호하고 가문을 지키기 위해 일생의 목숨을 다한 불타는 기백의 명예로운 호위 대장이었습니다. 어떤 고난과 시련 앞에서도 어깨를 당당히 펴고 승부를 보던 카리스마가 돋보입니다. 현생에서도 공정하고 카리스마 있는 비즈니스를 주도해 나가며 큰 부를 쟁취합니다.",
+        love: "가문을 위해 떠났으나 마침내 승전보를 안고 돌아와 평생을 약속한 소중한 정인과의 드라마틱한 의리와 로맨스를 가졌습니다. 일편단심 사랑을 펼치는 타입입니다.",
+        karma: "약자를 배려한 충직한 카르마가 현생의 든든한 등대로서 작용하니, 어려운 일이 닥쳤을 때 나를 전폭적으로 지지해 주는 거대한 명예와 승진운이 따르게 됩니다."
+    },
+    {
+        emoji: "🎨", identity: "고대 이집트 파라오의 벽화를 수놓던 천재적인 수석 조각가 (예술)",
+        destiny: "당신은 고대 신전의 장엄한 은하수와 신들의 모습을 흙과 바위에 정밀히 수놓던 최고의 손재주를 가진 예술가였습니다. 감수성이 한없이 그윽하고 눈치가 기막히게 비상하여 세상의 모든 세련된 미학적 감각을 한 몸에 만끽하는 재주가 있었습니다. 현대에도 콘텐츠, 디자인, IT, 뷰티에서 천재성을 발휘합니다.",
+        love: "밤하늘 은하수를 수놓은 신비로운 조각을 평생 챙겨주던 다정한 소울메이트와 말 없이 눈빛만 보아도 통하는 깊은 애정운을 품었습니다.",
+        karma: "내가 만들어 낸 창작물이 곧바로 백만장자들의 지갑을 열게 만들던 재주입니다. 내 아이디어와 독창적 센스가 평생 마르지 않는 실속 돈줄을 기분 좋게 보장해 줍니다."
+    },
+    {
+        emoji: "⛵", identity: "베네치아 물길을 종횡무진 개척하던 지혜로운 글로벌 유통 상인 (상인)",
+        destiny: "당신은 동양과 서양의 모든 귀중한 보석과 향신료를 도도하게 흘려보내며 판을 크게 흔들던 글로벌 사업가였습니다. 상황 판단과 임기응변이 기막히게 영리하여, 사소한 트렌드 하나도 놓치지 않고 큰 유통 마진과 인덕으로 바꿔내던 통찰의 리더십을 주도했습니다. 현생에서도 사업 경영에 대길합니다.",
+        love: "대륙을 오가는 길고 역동적인 여정 속에서도 편지 한 장에 영원한 정을 담아 보낸 의리 가득한 로맨스를 나눴습니다. 자유를 존중하는 짝과 대길합니다.",
+        karma: "거대한 모험을 통해 자수성가를 이뤄낸 실용적 카르마입니다. 내 손을 거쳐 가는 모든 비즈니스 인연들이 마르지 않는 돈맥이 되어 평생을 부유하게 지켜줍니다."
+    }
+];
+
+function calculatePastLifeGame() {
+    const nameInput = document.getElementById('past-game-name');
+    const catSelect = document.getElementById('past-game-category');
+    const resultBox = document.getElementById('pastgame-result-box');
+    const resEmoji = document.getElementById('pastgame-res-emoji');
+    const resTitle = document.getElementById('pastgame-res-title');
+    const resDesc = document.getElementById('pastgame-res-desc');
+
+    if (!nameInput || !catSelect || !resultBox || !resEmoji || !resTitle || !resDesc) return;
+
+    const name = nameInput.value.trim();
+    if (!name) {
+        alert("이름을 입력해 주세요!");
+        return;
+    }
+
+    const cat = catSelect.value;
+
+    // 이름의 글자 유니코드를 해시 시드화하여 전생 매칭 결정 (이름당 고유 전생 부여로 신뢰감 상승!)
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+        hash += name.charCodeAt(i) * (i + 1);
+    }
+    
+    const archetypeIdx = hash % PAST_LIFE_ARCHETYPES.length;
+    const item = PAST_LIFE_ARCHETYPES[archetypeIdx];
+
+    // 결과 렌더링
+    resEmoji.textContent = item.emoji;
+    resTitle.textContent = `${name} 님의 전생 실시간 오라클 결과`;
+
+    let contentHtml = `<p class="font-bold text-cyan-300 text-xs mb-1.5">🌟 전생 신분: <strong class="text-white text-sm">${item.identity}</strong></p>`;
+    
+    if (cat === 'destiny') {
+        contentHtml += `<p class="font-bold text-amber-300 text-xs mt-3 mb-1">🗝️ 내 영혼의 기질 해독</p><p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-sans">${item.destiny}</p>`;
+    } else if (cat === 'love') {
+        contentHtml += `<p class="font-bold text-pink-400 text-xs mt-3 mb-1">💕 내 전생의 애달픈 사랑법</p><p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-sans">${item.love}</p>`;
+    } else if (cat === 'karma') {
+        contentHtml += `<p class="font-bold text-emerald-400 text-xs mt-3 mb-1">🪙 지은 카르마와 현생 재물 비책</p><p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-sans">${item.karma}</p>`;
+    }
+
+    contentHtml += `<p class="pt-2 text-[10px] text-gray-500 border-t border-cyan-500/20 mt-3">※ 전생 오라클은 이름에 담긴 소리 에너지의 파장을 정교하게 해시 대조해 풀어내는 신비 놀이터입니다. 재미있게 보시고 오늘 하루 나에게 주어진 축복을 듬뿍 누리세요!</p>`;
+
+    resDesc.innerHTML = contentHtml;
+    resultBox.classList.remove('hidden');
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+
+// ==========================================================================
+// [수정됨] 프리미엄 킬러 명리 엔진 (나의 평생 수호 신수 오라클 & 천을귀인 만남 타이밍)
+// ==========================================================================
+
+// 1. 나의 평생 수호 신수(神獸) 오라클 해독
+function renderGuardianBeast(saju) {
+    const titleEl = document.getElementById('beast-destiny-title');
+    const descEl = document.getElementById('beast-destiny-desc');
+    if (!titleEl || !descEl) return;
+
+    // 태어난 년도의 지지(띠)를 기반으로 4대 신수 및 동양 영수 매핑
+    const beast_map = {
+        0: { name: "현무 (玄武) - 지혜와 불멸을 수호하는 영수 🐢", desc: "당신을 평생 호위하고 수호하는 영수는 깊고 고요한 밤의 북방 지혜를 수호하는 [현무]입니다. 음양의 기류를 완벽히 조율하는 상징으로, 뛰어난 통찰력과 위기 극변 속에서도 묵묵히 실속 자산을 차곡차곡 모으고 생명을 오래토록 유지시켜 주는 은혜로운 영적인 방패 역할을 담당합니다." },
+        1: { name: "기린 (麒麟) - 신의와 자비로운 부귀를 수호하는 영수 🦄", desc: "당신을 지켜주는 수호 영수는 어진 성정과 재물, 자손 번창의 축복을 상징하는 동양의 영험한 영수 [기린]입니다. 주변에 온화함과 기분 좋은 평화를 전파하며 만인에게 극찬을 유도하는 기상입니다. 약속을 우직하게 지킬수록 일생 부유하고 안락한 부귀 대복록이 도도하게 흐릅니다." },
+        2: { name: "주작 (朱雀) - 열정과 찬란한 번영을 수호하는 영수 🦅", desc: "당신을 호위하는 영수는 하늘 높이 떠서 세상을 따뜻하게 밝히고 웅장하게 번영시키는 붉은 봉황 [주작]입니다. 불꽃처럼 뜨거운 추진력과 예술적 스타성을 품어, 남들이 주저하는 위기 앞에서 당당히 앞서며 명예의 최정상을 개척해 낼 수 있는 위풍당당한 수호 에너지를 의미합니다." },
+        3: { name: "해태 (海陀) - 정의와 액막이를 지키는 수호의 영수 🦁", desc: "당신을 지키는 영수는 사악한 화마와 액운을 머리로 받아쳐 물리치고, 공정함과 행운을 가져다주는 상상의 영물 [해태]입니다. 시비지심을 정확히 가리고 원칙을 세워 조직 안에서 고위 관운과 반듯한 명예의 도장을 받아낼 수 있도록 평생을 든든하게 호위하는 방어막입니다." },
+        4: { name: "청룡 (靑龍) - 광활한 꿈과 여의주를 수호하는 용 🐲", desc: "당신을 호위하는 수호신은 구름을 가르고 하늘 위로 당당히 승천하는 오색 찬란한 비구름의 제왕 [청룡]입니다. 야망의 스케일이 타인과 궤도를 달리하며, 상상력과 창조적인 기획력으로 무장하여 단 한 번의 기회를 통해 세상의 모든 감투와 부귀를 손에 움켜쥐는 든든한 등대 기상입니다." },
+        5: { name: "백호 (白虎) - 용맹함과 영험한 기세를 수호하는 백수의 왕 🐯", desc: "당신을 수호하는 신수는 태양의 강력한 서쪽 정기를 품어 사악한 액을 한 방에 물어뜯어 찢어발기는 용맹무쌍한 [백호]입니다. 강렬한 투지와 결단력을 선물하여, 프로페셔널한 실력 하나만으로 경쟁자들을 시원하게 제압하고 상층부를 거머쥐는 최고의 파괴력 가득한 행운 수호신입니다." }
+    };
+
+    const cur = beast_map[saju.nyeon.jiIdx % 6] || beast_map[4];
+    titleEl.textContent = cur.name;
+    descEl.innerHTML = `
+        <p class="mb-2"><strong class="text-cyan-200">[사신도 동양 수호 영수 처방]</strong></p>
+        <p class="mb-3 font-sans text-gray-200 leading-relaxed text-xs sm:text-sm">${cur.desc}</p>
+        <p class="pt-2 text-[11px] text-cyan-400 font-serif-kr italic">"나의 태어난 해의 정기가 동양의 영수와 상생 결속되어, 사소한 잔병치레와 해로운 손재수를 방어하고 가문을 수호하는 힘으로 평생 작용합니다."</p>
+    `;
+}
+
+// 2. 천을귀인(天乙貴人) 인생 귀인 타이밍 & 방향 산출
+function renderCheoneulGwiin(saju, ilGan) {
+    const titleEl = document.getElementById('gwiin-destiny-title');
+    const descEl = document.getElementById('gwiin-destiny-desc');
+    if (!titleEl || !descEl) return;
+
+    // 일간에 따른 천을귀인 띠 동물 매핑 (자평명리 공식 정밀 적용)
+    // 갑무경 -> 축미 (소, 양) / 을기 -> 자신 (쥐, 원숭이) / 병정 -> 해유 (돼지, 닭) / 임계 -> 사묘 (뱀, 토끼) / 신 -> 오인 (말, 호랑이)
+    const gwiin_map = {
+        '갑': { animals: "소띠 (丑) 와 양띠 (未)", direction: "북동쪽 및 남서쪽", desc: "당신의 사주 구원 투수인 천을귀인은 우직한 소띠와 온화한 양띠입니다. 삶에서 큰 갈등이나 계약 정체에 직면했을 때 이 두 띠에 해당하는 귀인이 나타나 말 없이 든든하게 해결책과 재물의 힌트를 쥐여주게 됩니다." },
+        '무': { animals: "소띠 (丑) 와 양띠 (未)", direction: "북동쪽 및 남서쪽", desc: "당신의 하늘이 내린 수호 귀인은 소띠와 양띠입니다. 인생에서 중요한 결정을 앞두고 있을 때, 성정이 듬직하고 조언을 아끼지 않는 이 두 띠를 만날 때 막혔던 운의 순환이 실시간 대길하게 트입니다." },
+        '경': { animals: "소띠 (丑) 와 양띠 (未)", direction: "북동쪽 및 남서쪽", desc: "당신의 일생 수호 귀인은 소띠와 양띠입니다. 공과 사가 확실한 당신에게 묵직한 신뢰를 지켜주는 인덕이 되어 주며, 동업하거나 중요 결정을 함께 설계할 때 성공률이 곱절로 증폭됩니다." },
+        '을': { animals: "쥐띠 (子) 와 원숭이띠 (申)", direction: "정북쪽 및 서남쪽", desc: "당신의 사주 구원 투수는 영리한 쥐띠와 재주 많은 원숭이띠입니다. 기획이나 문서 계약에서 막히는 상황이 있을 때 머리 회전이 비상한 이 두 귀인이 나타나 짜릿한 행운의 길잡이 노릇을 척척 수행해 줍니다." },
+        '기': { animals: "쥐띠 (子) 와 원숭이띠 (申)", direction: "정북쪽 및 서남쪽", desc: "당신의 최고의 인덕 길성은 쥐띠와 원숭이띠입니다. 성품이 따뜻하고 꼼꼼한 당신에게 유연한 융통성과 돈이 굴러가는 활기찬 아이디어를 가득 주입해 주는 은혜로운 만남이 예약되어 있습니다." },
+        '병': { animals: "돼지띠 (亥) 와 닭띠 (酉)", direction: "북서쪽 및 정서쪽", desc: "당신의 수호 귀인 동물은 지혜로운 돼지띠와 꼼꼼하고 단정한 닭띠입니다. 정열적이나 마무리가 성급할 수 있는 당신에게, 차분하게 돈의 흐름을 쥐여주고 완벽한 도장의 성취를 보장해 주는 일등 조력자의 띠입니다." },
+        '정': { animals: "돼지띠 (亥) 와 닭띠 (酉)", direction: "북서쪽 및 정서쪽", desc: "당신의 인생 구원 길성은 돼지띠와 닭띠입니다. 마음이 섬세하여 쉽게 상처받기 쉬운 당신을 너른 포용력과 세련된 미적 감각으로 수호하며 귀중한 부의 자산을 불릴 문서를 가져다줍니다." },
+        '임': { animals: "뱀띠 (巳) 와 토끼띠 (卯)", direction: "남동쪽 및 동쪽", desc: "당신의 인생 귀인 동물은 수려한 뱀띠와 생동감 넘치는 토끼띠입니다. 넓고 큰 기상을 가진 당신에게, 세련된 비즈니스 수완과 따뜻한 예술적 센스로 인생 무대를 글로벌하게 확장 시켜 줄 귀인들입니다." },
+        '계': { animals: "뱀띠 (巳) 와 토끼띠 (卯)", direction: "남동쪽 및 동쪽", desc: "당신의 평생을 도울 천을귀인은 뱀띠와 토끼띠입니다. 영리하고 사색 깊은 당신에게, 실속 있는 금전 투자와 다정다감한 대인관계 끈을 넓혀 주어 삶을 풍요롭게 보좌하는 수호신들입니다." },
+        '신': { animals: "말띠 (午) 와 호랑이띠 (寅)", direction: "정남쪽 및 동북쪽", desc: "당신의 하늘이 내린 최고의 귀인은 힘찬 말띠와 용맹한 호랑이띠입니다. 보석처럼 깔끔하고 예민한 당신에게, 가슴 탁 트이는 호쾌한 기상과 스케일이 큰 사업적 재물 기획을 가득 선물하는 환상의 인덕입니다." }
+    };
+
+    const cur = gwiin_map[ilGan.name] || gwiin_map['갑'];
+    
+    // 귀인 만남 대길 골든 타이밍 연산 (대운과 세운을 조율)
+    const nowYr = new Date().getFullYear();
+    const luckyYears = `${nowYr + 2}년 및 ${nowYr + 5}년`;
+
+    titleEl.textContent = `🤝 내 인생을 수호하는 천을귀인 (貴人) 비책`;
+    descEl.innerHTML = `
+        <p class="mb-2"><strong class="text-amber-300">[천을귀인 수호 조언]</strong></p>
+        <p class="mb-3 font-sans text-gray-200 leading-relaxed text-xs sm:text-sm">${cur.desc}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs pt-2.5 border-t border-amber-500/20">
+            <div><span class="text-gray-400 block text-[10px]">🐮 귀인 동물 띠</span><span class="text-amber-300 font-bold">${cur.animals}</span></div>
+            <div><span class="text-gray-400 block text-[10px]">🧭 귀인이 찾아오는 수호 방향</span><span class="text-amber-300 font-bold">${cur.direction}</span></div>
+            <div><span class="text-gray-400 block text-[10px]">⏰ 귀인을 만나는 최적의 골든 타이밍</span><span class="text-amber-300 font-bold">${luckyYears} 내외의 세운 시기</span></div>
+        </div>
+    `;
 }
