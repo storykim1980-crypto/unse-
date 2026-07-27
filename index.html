@@ -154,6 +154,30 @@
             });
         }
     </script>
+
+    <!-- ===================== [수정됨] 서비스 워커 강력 제거 킬스위치 (캐시 감옥 탈출 및 업데이트 강제 반영) ===================== -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                let unregisterCount = 0;
+                for (let registration of registrations) {
+                    registration.unregister();
+                    unregisterCount++;
+                }
+                if (unregisterCount > 0) {
+                    console.log("기존 서비스 워커 " + unregisterCount + "개 해제 완료!");
+                    if (window.caches) {
+                        caches.keys().then(function(names) {
+                            for (let name of names) caches.delete(name);
+                        });
+                    }
+                    setTimeout(function() {
+                        window.location.reload(true);
+                    }, 300);
+                }
+            });
+        }
+    </script>
 </head>
 <body class="selection:bg-gold-500 selection:text-mystic-900 pb-24">
 
@@ -206,6 +230,9 @@
         </div>
     </section>
 
+    
+
+    <!-- ===================== [수정됨] Jaypromax 스타일 최고급 2단 통합 그리드 레이아웃 (모바일-계산기 상단 배치 / PC-사이드바 대칭) ===================== -->
     
 
     <!-- ===================== [수정됨] Jaypromax 스타일 최고급 2단 통합 그리드 레이아웃 (모바일-계산기 상단 배치 / PC-사이드바 대칭) ===================== -->
@@ -402,7 +429,7 @@
                     <div class="text-center pb-3 border-b border-white/10"><span class="text-xs font-bold text-gray-400 block mb-0.5">시주 (時柱) · 말년(60세~) / 자녀</span><span class="text-sm font-bold text-gray-200" id="res-si-title"></span></div>
                     <div class="my-4 text-center"><div class="text-xs text-gray-400 mb-1" id="res-si-gan-sipsin"></div><div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl flex flex-col items-center justify-center font-serif-kr font-bold text-2xl sm:text-3xl border shadow-inner transition transform hover:scale-105" id="res-si-gan-box"><span id="res-si-gan-han"></span></div><div class="text-xs font-bold mt-1.5" id="res-si-gan-kr"></div></div>
                     <div class="my-3 text-center"><div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl flex flex-col items-center justify-center font-serif-kr font-bold text-2xl sm:text-3xl border shadow-inner transition transform hover:scale-105" id="res-si-ji-box"><span id="res-si-ji-han"></span></div><div class="text-xs font-bold mt-1.5" id="res-si-ji-kr"></div><div class="text-xs text-gray-400 mt-0.5" id="res-si-ji-sipsin"></div></div>
-                    <div class="pt-3 border-t border-white/10 text-center space-y-1 text-xs text-gray-300"><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">숨겨진 보물 재능 (숨겨진 보물 재능 (지장간))</span><span class="font-medium text-amber-300" id="res-si-jijanggan"></span></div><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">운명 주기 에너지 (운명 주기 에너지 (십이운성))</span><span class="font-medium text-emerald-300" id="res-si-unseong"></span></div></div>
+                    <div class="pt-3 border-t border-white/10 text-center space-y-1 text-xs text-gray-300"><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">숨겨진 보물 재능 (숨겨진 보물 재능 (숨겨진 보물 재능 (지장간)))</span><span class="font-medium text-amber-300" id="res-si-jijanggan"></span></div><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">운명 주기 에너지 (운명 주기 에너지 (운명 주기 에너지 (십이운성)))</span><span class="font-medium text-emerald-300" id="res-si-unseong"></span></div></div>
                 </div>
 
                 <!-- 일주 (주인공) -->
@@ -411,7 +438,7 @@
                     <div class="text-center pb-3 border-b border-amber-500/30 relative"><span class="text-xs font-extrabold text-amber-400 block mb-0.5">★ 일주 (日柱) · 장년(45~60세) / 본인</span><span class="text-sm font-extrabold text-white" id="res-il-title"></span></div>
                     <div class="my-4 text-center relative"><div class="text-xs text-amber-400 font-bold mb-1">본원 (일간 · 나)</div><div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl flex flex-col items-center justify-center font-serif-kr font-extrabold text-3xl sm:text-4xl border-2 shadow-xl transition transform hover:scale-105 ring-4 ring-amber-500/20" id="res-il-gan-box"><span id="res-il-gan-han"></span></div><div class="text-sm font-extrabold mt-1.5" id="res-il-gan-kr"></div></div>
                     <div class="my-3 text-center"><div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl flex flex-col items-center justify-center font-serif-kr font-bold text-2xl sm:text-3xl border shadow-inner transition transform hover:scale-105" id="res-il-ji-box"><span id="res-il-ji-han"></span></div><div class="text-xs font-bold mt-1.5" id="res-il-ji-kr"></div><div class="text-xs text-gray-400 mt-0.5" id="res-il-ji-sipsin"></div></div>
-                    <div class="pt-3 border-t border-white/10 text-center space-y-1 text-xs text-gray-300"><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">숨겨진 보물 재능 (숨겨진 보물 재능 (지장간))</span><span class="font-medium text-amber-300" id="res-il-jijanggan"></span></div><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">운명 주기 에너지 (운명 주기 에너지 (십이운성))</span><span class="font-medium text-emerald-300" id="res-il-unseong"></span></div></div>
+                    <div class="pt-3 border-t border-white/10 text-center space-y-1 text-xs text-gray-300"><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">숨겨진 보물 재능 (숨겨진 보물 재능 (숨겨진 보물 재능 (지장간)))</span><span class="font-medium text-amber-300" id="res-il-jijanggan"></span></div><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">운명 주기 에너지 (운명 주기 에너지 (운명 주기 에너지 (십이운성)))</span><span class="font-medium text-emerald-300" id="res-il-unseong"></span></div></div>
                 </div>
 
                 <!-- 월주 -->
@@ -419,7 +446,7 @@
                     <div class="text-center pb-3 border-b border-white/10"><span class="text-xs font-bold text-gray-400 block mb-0.5">월주 (月柱) · 청중년(20~45세) / 직업</span><span class="text-sm font-bold text-gray-200" id="res-wol-title"></span></div>
                     <div class="my-4 text-center"><div class="text-xs text-gray-400 mb-1" id="res-wol-gan-sipsin"></div><div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl flex flex-col items-center justify-center font-serif-kr font-bold text-2xl sm:text-3xl border shadow-inner transition transform hover:scale-105" id="res-wol-gan-box"><span id="res-wol-gan-han"></span></div><div class="text-xs font-bold mt-1.5" id="res-wol-gan-kr"></div></div>
                     <div class="my-3 text-center"><div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl flex flex-col items-center justify-center font-serif-kr font-bold text-2xl sm:text-3xl border shadow-inner transition transform hover:scale-105" id="res-wol-ji-box"><span id="res-wol-ji-han"></span></div><div class="text-xs font-bold mt-1.5" id="res-wol-ji-kr"></div><div class="text-xs text-gray-400 mt-0.5" id="res-wol-ji-sipsin"></div></div>
-                    <div class="pt-3 border-t border-white/10 text-center space-y-1 text-xs text-gray-300"><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">숨겨진 보물 재능 (숨겨진 보물 재능 (지장간))</span><span class="font-medium text-amber-300" id="res-wol-jijanggan"></span></div><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">운명 주기 에너지 (운명 주기 에너지 (십이운성))</span><span class="font-medium text-emerald-300" id="res-wol-unseong"></span></div></div>
+                    <div class="pt-3 border-t border-white/10 text-center space-y-1 text-xs text-gray-300"><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">숨겨진 보물 재능 (숨겨진 보물 재능 (숨겨진 보물 재능 (지장간)))</span><span class="font-medium text-amber-300" id="res-wol-jijanggan"></span></div><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">운명 주기 에너지 (운명 주기 에너지 (운명 주기 에너지 (십이운성)))</span><span class="font-medium text-emerald-300" id="res-wol-unseong"></span></div></div>
                 </div>
 
                 <!-- 년주 -->
@@ -427,7 +454,7 @@
                     <div class="text-center pb-3 border-b border-white/10"><span class="text-xs font-bold text-gray-400 block mb-0.5">년주 (年柱) · 초년(1~20세) / 가문</span><span class="text-sm font-bold text-gray-200" id="res-nyeon-title"></span></div>
                     <div class="my-4 text-center"><div class="text-xs text-gray-400 mb-1" id="res-nyeon-gan-sipsin"></div><div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl flex flex-col items-center justify-center font-serif-kr font-bold text-2xl sm:text-3xl border shadow-inner transition transform hover:scale-105" id="res-nyeon-gan-box"><span id="res-nyeon-gan-han"></span></div><div class="text-xs font-bold mt-1.5" id="res-nyeon-gan-kr"></div></div>
                     <div class="my-3 text-center"><div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl flex flex-col items-center justify-center font-serif-kr font-bold text-2xl sm:text-3xl border shadow-inner transition transform hover:scale-105" id="res-nyeon-ji-box"><span id="res-nyeon-ji-han"></span></div><div class="text-xs font-bold mt-1.5" id="res-nyeon-ji-kr"></div><div class="text-xs text-gray-400 mt-0.5" id="res-nyeon-ji-sipsin"></div></div>
-                    <div class="pt-3 border-t border-white/10 text-center space-y-1 text-xs text-gray-300"><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">숨겨진 보물 재능 (숨겨진 보물 재능 (지장간))</span><span class="font-medium text-amber-300" id="res-nyeon-jijanggan"></span></div><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">운명 주기 에너지 (운명 주기 에너지 (십이운성))</span><span class="font-medium text-emerald-300" id="res-nyeon-unseong"></span></div></div>
+                    <div class="pt-3 border-t border-white/10 text-center space-y-1 text-xs text-gray-300"><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">숨겨진 보물 재능 (숨겨진 보물 재능 (숨겨진 보물 재능 (지장간)))</span><span class="font-medium text-amber-300" id="res-nyeon-jijanggan"></span></div><div class="flex justify-between text-[11px] bg-white/5 px-2 py-1 rounded"><span class="text-gray-400">운명 주기 에너지 (운명 주기 에너지 (운명 주기 에너지 (십이운성)))</span><span class="font-medium text-emerald-300" id="res-nyeon-unseong"></span></div></div>
                 </div>
             </div>
         </div>
@@ -1452,78 +1479,6 @@
                 </button>
             </form>
             </div>
-
-            <!-- [위젯 2] 30대 그랜드 운세 메뉴 선택기 (Dashboard Sidebar Navigation) -->
-            <div class="glass-card rounded-2xl p-5 border border-purple-500/20 space-y-4 shadow-xl relative overflow-hidden">
-                <div class="absolute -right-20 -bottom-20 w-40 h-40 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="flex items-center space-x-2.5 pb-2.5 border-b border-white/10">
-                    <div class="p-2 rounded-xl bg-purple-500/20 text-purple-300"><i data-lucide="compass" class="w-5 h-5 block flex-shrink-0 align-middle"></i></div>
-                    <div>
-                        <h4 class="font-serif-kr text-sm sm:text-base font-bold text-white">🧭 30대 운세 메뉴 선택기</h4>
-                        <p class="text-[10px] text-gray-400">원하는 종류를 터치하면 즉시 해독서가 개방됩니다.</p>
-                    </div>
-                </div>
-                
-                <div class="max-h-[380px] overflow-y-auto pr-1 space-y-4 scrollbar-thin text-xs text-left">
-                    <!-- 제 1성전 -->
-                    <div class="space-y-1.5">
-                        <span class="text-[10px] font-extrabold text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded block w-max uppercase tracking-wider">🏛️ 제 1성전: 선천 운명 설계 (8)</span>
-                        <div class="divide-y divide-white/5 pl-1">
-                            <div id="side-item-oheng" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('oheng')"><span>📊 1. 오행 균형 &amp; 심층 진단</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-sipsin" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('sipsin')"><span>🧭 2. 격국 &amp; 용신 분석</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-life" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('life')"><span>🌅 3. 평생 4대운세 로드맵</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-sinsal" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('sinsal')"><span>⚡ 4. 15대 신살 &amp; 합충</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-ilju" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('ilju')"><span>👤 5. 나만의 일주 심층 해독</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-daeun" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('daeun')"><span>📈 6. 10년 단위 대운 흐름</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-seun" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('seun')"><span>📅 7. 신년 세운 &amp; 월별 흐름</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-guide" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('guide')"><span>🍀 8. 맞춤 인생 개운법 처방</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                        </div>
-                    </div>
-                    
-                    <!-- 제 2성전 -->
-                    <div class="space-y-1.5 pt-1">
-                        <span class="text-[10px] font-extrabold text-pink-300 bg-pink-500/10 border border-pink-500/20 px-2 py-0.5 rounded block w-max uppercase tracking-wider">💼 제 2성전: 실전 사회 생활 (8)</span>
-                        <div class="divide-y divide-white/5 pl-1">
-                            <div id="side-item-naming" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('naming')"><span>✍️ 9. 작명·개명 성명학 감정</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-gunghap" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('gunghap')"><span>💘 10. 미래 배우자 &amp; 궁합</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-child" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('child')"><span>🍼 11. 자녀복 &amp; 자녀 지도법</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-celebrity" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('celebrity')"><span>👑 12. 나와 닮은 위인 매칭</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-daily" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('daily')"><span>☀️ 13. 오늘의 일진 바이오</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-tojung" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('tojung')"><span>📜 14. 정통 토정비결 144괘</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-wealth" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('wealth')"><span>💰 15. 평생 재물운 &amp; 수완</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-taegil" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('taegil')"><span>📅 16. 수호 이사·결혼 택일</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                        </div>
-                    </div>
-
-                    <!-- 제 3성전 -->
-                    <div class="space-y-1.5 pt-1">
-                        <span class="text-[10px] font-extrabold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded block w-max uppercase tracking-wider">🧘 제 3성전: 현대 라이프 해독 (8)</span>
-                        <div class="divide-y divide-white/5 pl-1">
-                            <div id="side-item-health" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('health')"><span>🩹 17. 오행 장부 건강 체질</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-dream" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('dream')"><span>😴 18. 길흉 화복 꿈해몽 대조</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-pungsu" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('pungsu')"><span>🏠 19. 양택 풍수 인테리어</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-samjae" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('samjae')"><span>👺 20. 신비 삼재비방 액막이</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-career" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('career')"><span>💼 21. 취업·이직·승진 적성</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-luckynum" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('luckynum')"><span>📞 22. 행운 전화번호 끝자리</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-pet" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('pet')"><span>🐾 23. 반려동물 수호 띠 궁합</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-pastlife" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('pastlife')"><span>✨ 24. 나의 전생 스토리</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                        </div>
-                    </div>
-
-                    <!-- 제 4성전 -->
-                    <div class="space-y-1.5 pt-1">
-                        <span class="text-[10px] font-extrabold text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 rounded px-2 py-0.5 block w-max uppercase tracking-wider">🔮 제 4성전: 동서양 신비 운명 (6)</span>
-                        <div class="divide-y divide-white/5 pl-1">
-                            <div id="side-item-tangsaju" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('tangsaju')"><span>📜 25. 동양 전통 그림 당사주</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-numerology" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('numerology')"><span>🔢 26. 유럽식 탄생일 운명수</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-chakra" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('chakra')"><span>🧘 27. 인도 수호 차크라</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-celtictree" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('celtictree')"><span>🌲 28. 북유럽 생일 수호나무</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-guardianbeast" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('guardianbeast')"><span>🐲 29. 평생 수호 신수 오라클</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-cheoneulgwiin" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('cheoneulgwiin')"><span>🤝 30. 천을귀인 만남 &amp; 방향</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1545,9 +1500,6 @@
         <div class="relative w-24 h-24 mb-6 flex items-center justify-center">
             <div class="absolute inset-0 border-4 border-amber-500/20 border-t-amber-400 rounded-full animate-spin"></div>
             <div class="text-4xl animate-pulse">🔮</div>
-        </div>
-        <p class="text-xs text-amber-300/80 mt-3 animate-pulse font-serif-kr">나만의 운명 설계도를 실시간 해독 중입니다...</p>
-</div>
     <!-- Footer -->
     <footer class="max-w-7xl mx-auto px-4 py-8 mt-16 border-t border-white/10 text-center text-xs text-gray-500 space-y-3">
         <p>🌾 <strong>운세방앗간</strong> · 무료 사주팔자 · 평생운세 · 궁합 · 작명 · 꿈해몽 · 토정비결 · 삼재 30대 그랜드 정통 명리 포털</p>
