@@ -192,12 +192,12 @@
                     // 초기 화면 최적화: 사용자의 실제 입력을 받기 전까지 CURRENT_SAJU는 null로 유지!
                     CURRENT_SAJU = null;
                     
+                    // 첫 번째 오행 균형 리포트 카드를 대시보드 기본값으로 장착 활성화! (2026 리뉴얼: 숨김 처리보다 먼저 실행)
+                    selectSajuMenu('oheng');
+
                     // 결과창 숨김 유지 (초기 메인화면 최적화: 사용자가 분석하기 버튼을 클릭하기 전에는 보이지 않음)
                     const resSec = document.getElementById('result-section');
                     if (resSec) resSec.classList.add('hidden');
-                    
-                    // 첫 번째 오행 균형 리포트 카드를 대시보드 기본값으로 장착 활성화!
-                    selectSajuMenu('oheng');
                     
                     // 사용자가 폼 필드를 봤을 때 샘플 값이 매칭되도록 폼 셀렉트 값 연동
                     document.getElementById('birth-year').value = year;
@@ -445,7 +445,7 @@
 
             // 기존 16대 필수 연산
             renderOhengAnalysis(saju, ilGan); renderSipsinAndYongsin(saju, ilGan, wolJi); renderLifeStages(saju, ilGan, ilJi); renderHabchungAndSinsal15(saju, ilGan, ilJi); renderIljuDetail(saju.il.name, ilGan, ilJi); renderDaeun(saju, isForward, daeunStartAge, manAge); renderSeunAndGuide(saju, ilGan, ilJi);
-            renderDailyFortune(saju, ilGan, ilJi); renderTojungBigyeol(CURRENT_SAJU); renderWealthMastery(saju, ilGan, wolJi); renderTaegilMastery(saju, ilGan, ilJi);
+            renderDailyFortune(saju, ilGan, ilJi); renderTojungBigyeol(saju); /* [리뉴얼 패치] 초기 샘플 렌더 시 CURRENT_SAJU가 null이라 렌더 체인이 중단되던 버그 수정 */ renderWealthMastery(saju, ilGan, wolJi); renderTaegilMastery(saju, ilGan, ilJi);
             renderSpouseProfile(saju, ilGan, ilJi); renderChildMastery(saju, ilGan, ilJi); renderCelebrityMatch(saju, ilGan, wolJi); analyzeNaming();
             
             // [수정됨] 신규 4대 글로벌 신비 운명학 연산 엔진 훅 실행

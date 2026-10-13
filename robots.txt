@@ -5,4 +5,8 @@ Allow: /js/
 Allow: /data/
 Allow: /assets/
 
+# 운영 문서는 검색엔진 수집 제외 (서버에는 있어도 색인되지 않도록)
+Disallow: /RENEWAL.md
+Disallow: /DEPLOY.sh
+
 Sitemap: https://www.unsemill.com/sitemap.xml

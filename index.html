@@ -9,7 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <!-- ⚠️ 배포할 때마다 아래 APP_VERSION 값만 새 숫자로 바꾸면 모든 기기가 새 파일을 강제 로드합니다 -->
-    <script>window.APP_VERSION = "20260724-120000";</script>
+    <script>window.APP_VERSION = "20261013-1500";</script>
 
     <!-- ===================== 기본 SEO ===================== -->
     <title>운세방앗간 | 100% 무료 사주·운세·궁합·작명 30대 그랜드 명리 철학원</title>
@@ -36,14 +36,17 @@
     <meta property="og:locale" content="ko_KR">
     <meta property="og:title" content="운세방앗간 | 무료 사주팔자·평생운세·궁합·작명 30대 그랜드 정통 명리 포털">
     <meta property="og:description" content="생년월일시만 입력하면 사주팔자 원국부터 평생운세, 궁합, 작명, 꿈해몽, 삼재까지 30가지 정밀 운세를 무료로 풀어드립니다.">
-    <meta property="og:image" content="https://www.unsemill.com/assets/hero-sky.svg">
+    <meta property="og:image" content="https://www.unsemill.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:url" content="https://www.unsemill.com/">
 
     <!-- ===================== Twitter Card ===================== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="운세방앗간 | 무료 사주팔자·평생운세·궁합 30대 그랜드 명리 포털">
     <meta name="twitter:description" content="생년월일시만으로 30가지 정밀 운세를 무료로. 정통 명리학 기반, 회원가입 없이 이용.">
-    <meta name="twitter:image" content="https://www.unsemill.com/assets/hero-sky.svg">
+    <meta name="twitter:image" content="https://www.unsemill.com/assets/og-image.png">
 
     <!-- ===================== 모바일/PWA ===================== -->
     <meta name="theme-color" content="#0B0A16">
@@ -69,7 +72,7 @@
       "@type": "Organization",
       "name": "운세방앗간",
       "url": "https://www.unsemill.com/",
-      "logo": "https://www.unsemill.com/assets/hero-sky.svg"
+      "logo": "https://www.unsemill.com/assets/icon-512.png"
     }
     </script>
     <script type="application/ld+json">
@@ -79,19 +82,60 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "운세방앗간은 무료인가요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "네, 사주팔자 원국 분석부터 평생운세, 궁합, 작명, 꿈해몽, 삼재까지 30가지 운세를 회원가입 없이 무료로 이용할 수 있습니다." }
+          "name": "운세방앗간은 정말 회원가입 없이 평생 100% 무료인가요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "네. 운세방앗간은 학술 연구와 지식 나눔을 목적으로 운영되며, 회원가입·휴대폰 인증·유료 결제 유도 없이 30대 그랜드 대운문 전체를 언제나 무료로 열람하실 수 있습니다." }
         },
         {
           "@type": "Question",
-          "name": "입력한 생년월일 정보는 저장되나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "아니요. 모든 운세 계산은 이용자의 브라우저 안에서만 이루어지며, 입력한 생년월일시 정보는 외부 서버로 전송되거나 저장되지 않습니다." }
+          "name": "출생 시간을 정확히 모를 때는 어떻게 하나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "시간 입력란에서 '출생 시간 모름(삼주 기본 정밀 해독)'을 선택하시면 됩니다. 년주·월주·일주 3주 6글자만으로도 일간의 본원과 격국, 대운 흐름을 80% 이상의 정확도로 풀이해 드립니다." }
         },
         {
           "@type": "Question",
-          "name": "태어난 시간을 몰라도 볼 수 있나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "네. 시간을 몰라도 연·월·일 기준으로 대부분의 운세를 볼 수 있으며, 시간을 입력하면 말년운과 자녀운까지 더 정밀하게 해석됩니다." }
+          "name": "입력한 생년월일이 서버에 저장되거나 유출되지 않나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "절대 저장되지 않습니다. 모든 만세력 연산은 이용자의 웹 브라우저 로컬 메모리(Client-side Javascript)에서만 즉시 처리되며, 새로고침하거나 탭을 닫으면 즉각 완전 소멸됩니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "2026 병오(丙午)년 세운은 언제부터 적용되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "정통 명리학에서는 양력 1월 1일이 아닌 24절기 중 입춘(立春, 통상 양력 2월 4일경)을 기준으로 새해의 간지(丙午)가 정식 교체됩니다. 본 시스템은 절기력 정밀 시점을 완벽 반영합니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "30가지 운세는 어떤 것들이 있나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "제1성전 선천 운명 설계(오행 균형·격국 용신·평생 총운·신살 합충·일주 해독·10년 대운·신년 세운·개운 처방), 제2성전 실전 사회(작명·궁합·자녀·위인 매칭·일진·토정비결·재물·택일), 제3성전 현대 라이프(건강·꿈해몽·풍수·삼재·취업 적성·행운 번호·반려동물·전생), 제4성전 동서양 신비(당사주·수비학·차크라·켈트 수호목·수호 신수·천을귀인) 총 30종입니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "모바일에서도 이용할 수 있나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "네. 스마트폰·태블릿·PC 모두 동일한 정밀 만세력 연산을 지원하며, 홈 화면에 추가하면 앱처럼 사용할 수 있습니다." }
         }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "운세방앗간 정밀 만세력",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web (모바일/태블릿/PC)",
+      "url": "https://www.unsemill.com/",
+      "inLanguage": "ko-KR",
+      "description": "생년월일시만 입력하면 사주 8글자 원국과 30가지 정밀 운세를 브라우저에서 즉시 연산하는 무료 명리 서비스입니다.",
+      "featureList": ["사주 8글자 4주 원국 분석", "오행 균형·격국 용신", "10년 대운·신년 세운", "궁합·작명·토정비결·꿈해몽", "당사주·수비학·차크라"],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+      "isAccessibleForFree": true
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "운세방앗간", "item": "https://www.unsemill.com/" },
+        { "@type": "ListItem", "position": 2, "name": "무료 사주·운세 30대 대궐", "item": "https://www.unsemill.com/#grand-directory" }
       ]
     }
     </script>
@@ -100,122 +144,234 @@
     <!-- ⚠️ 아래 ca-pub-3122957517118825 를 본인 게시자 ID로 교체하세요 -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3122957517118825" crossorigin="anonymous"></script>
 
-    <!-- ===================== 리소스 로드 ===================== -->
+    <!-- ===================== 리소스 로드 (2026 리뉴얼 디자인) ===================== -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B0F19'/%3E%3Ctext y='72' x='50' font-size='58' text-anchor='middle'%3E%F0%8C%BE%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+    <link rel="manifest" href="./manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20260724-120000">
-    <script src="https://unpkg.com/lucide@0.294.0/dist/umd/lucide.min.js"></script>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css?v=20261013-1500">
+    <link rel="stylesheet" href="./css/redesign.css?v=20261013-1500">
+    <!-- 아이콘 라이브러리: defer 로 렌더링 차단 없이 로드 (미로드 시 아이콘만 생략되고 기능은 정상) -->
+    <script defer src="https://unpkg.com/lucide@0.294.0/dist/umd/lucide.min.js"
+            onerror="window.__lucideFailed=true;console.warn('[운세방앗간] 아이콘 라이브러리 로드 실패 — 아이콘 없이 정상 동작합니다.')"></script>
 
-    <!-- ===================== [수정됨] 서비스 워커 강력 제거 킬스위치 (캐시 감옥 탈출 및 업데이트 강제 반영) ===================== -->
+    <!-- ===================== 서비스 워커 킬스위치 (이전 캐시 감옥 탈출) ===================== -->
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                let unregisterCount = 0;
-                for (let registration of registrations) {
-                    registration.unregister();
-                    unregisterCount++;
-                }
-                if (unregisterCount > 0) {
-                    console.log("기존 서비스 워커 " + unregisterCount + "개 해제 완료!");
-                    if (window.caches) {
-                        caches.keys().then(function(names) {
-                            for (let name of names) caches.delete(name);
-                        });
-                    }
-                    setTimeout(function() {
-                        window.location.reload(true);
-                    }, 300);
-                }
-            });
-        }
-    </script>
-
-    <!-- ===================== [수정됨] 서비스 워커 강력 제거 킬스위치 (캐시 감옥 탈출 및 업데이트 강제 반영) ===================== -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                let unregisterCount = 0;
-                for (let registration of registrations) {
-                    registration.unregister();
-                    unregisterCount++;
-                }
-                if (unregisterCount > 0) {
-                    console.log("기존 서비스 워커 " + unregisterCount + "개 해제 완료!");
-                    if (window.caches) {
-                        caches.keys().then(function(names) {
-                            for (let name of names) caches.delete(name);
-                        });
-                    }
-                    setTimeout(function() {
-                        window.location.reload(true);
-                    }, 300);
+                var n = 0;
+                for (var reg of registrations) { reg.unregister(); n++; }
+                if (n > 0) {
+                    if (window.caches) { caches.keys().then(function(names) { names.forEach(function(x) { caches.delete(x); }); }); }
+                    setTimeout(function() { window.location.reload(); }, 300);
                 }
             });
         }
     </script>
 </head>
-<body class="selection:bg-gold-500 selection:text-mystic-900 pb-24">
+<body>
+    <a class="um-skip" href="#form-section">본문으로 바로가기 (운명 해독 계산기)</a>
 
-    <!-- Header Navigation -->
-    <header class="sticky top-0 z-50 backdrop-blur-xl bg-mystic-900/85 border-b border-white/10 px-4 py-3 sm:py-4">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-300 flex items-center justify-center shadow-lg shadow-amber-500/20 text-mystic-900 font-bold text-xl">🌾</div>
-                <div>
-                    <div class="font-serif-kr font-bold text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 whitespace-nowrap">
-                        운세방앗간
-                    </div>
-                    <p class="text-xs text-gray-400 hidden md:block">🎁 평생 사주 · 미래 배우자 궁합 · 토정비결 · 타로 · 전생 스토리 등 30가지 프리미엄 운세 평생 100% 무료</p>
-                </div>
-            </div>
-            <div class="flex items-center space-x-2 sm:space-x-4">
-                <span class="text-xs bg-mystic-800 border border-white/10 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-gray-300 hidden md:flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span id="header-today-date">기준일: 실시간 연동중...</span>
+    <!-- ============================== 상단 헤더 ============================== -->
+    <header class="um-header">
+        <div class="um-header-in">
+            <a class="um-brand" href="./index.html" aria-label="운세방앗간 홈으로">
+                <span class="um-brand-mark" aria-hidden="true">🌾</span>
+                <span>
+                    <span class="um-brand-name">운세방앗간</span>
+                    <span class="um-chip-ver">정밀 만세력 4.0</span>
+                    <span class="um-brand-tag">정통 명리학 30대 그랜드 운세 · 로컬 즉시 무손실 연산</span>
                 </span>
-                <button onclick="scrollToSection('form-section')" class="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-mystic-900 font-bold text-xs sm:text-sm transition-all shadow-md shadow-amber-500/20 whitespace-nowrap min-w-max">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 sm:w-4 sm:h-4 block flex-shrink-0 align-middle"></i><span class="whitespace-nowrap">내 운명 해독하기</span>
+            </a>
+
+            <nav class="um-nav" aria-label="운세 대궐 메뉴">
+                <button class="um-nav-btn is-active" id="nav-temple-1" type="button"
+                        onclick="selectTemple(1)">🏛️ 선천 운명</button>
+                <button class="um-nav-btn" id="nav-temple-2" type="button"
+                        onclick="selectTemple(2)">💼 실전 사회</button>
+                <button class="um-nav-btn" id="nav-temple-3" type="button"
+                        onclick="selectTemple(3)">🧘 현대 라이프</button>
+                <button class="um-nav-btn" id="nav-temple-4" type="button"
+                        onclick="selectTemple(4)">🔮 동서양 신비</button>
+                <button class="um-nav-btn" id="nav-lounge" type="button" onclick="scrollToSection('daily-lounge-section')">✨ 오늘의 운세</button>
+                <button class="um-nav-btn" type="button" onclick="scrollToSection('five-elements-section')">☯️ 오행/FAQ</button>
+            </nav>
+
+            <div class="um-head-right">
+                <span class="um-live"><i class="um-live-dot" aria-hidden="true"></i><span id="header-today-date">기준일: 실시간 연동중...</span></span>
+                <button class="um-icon-btn um-burger" type="button" onclick="toggleMobileNav()" aria-label="메뉴 열기" aria-controls="um-mobile-nav" aria-expanded="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
                 </button>
+                <button class="um-icon-btn" type="button" onclick="copyShareLink()" title="링크 공유하기" aria-label="링크 공유하기">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+                </button>
+                <button class="um-btn-gold" type="button" onclick="scrollToSection('form-section')">내 운명 해독 <span aria-hidden="true">→</span></button>
             </div>
+        </div>
+
+        <div class="um-mobile-nav" id="um-mobile-nav">
+            <button type="button" onclick="selectTemple(1);toggleMobileNav()">🏛️ 선천 운명</button>
+            <button type="button" onclick="selectTemple(2);toggleMobileNav()">💼 실전 사회</button>
+            <button type="button" onclick="selectTemple(3);toggleMobileNav()">🧘 현대 라이프</button>
+            <button type="button" onclick="selectTemple(4);toggleMobileNav()">🔮 동서양 신비</button>
+            <button type="button" onclick="scrollToSection('daily-lounge-section');toggleMobileNav()">✨ 오늘의 운세</button>
+            <button type="button" onclick="scrollToSection('five-elements-section');toggleMobileNav()">☯️ 오행/FAQ</button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto px-4 pt-4 sm:pt-8 md:pt-10 pb-4 sm:pb-6 text-center">
-        <div class="max-w-4xl mx-auto space-y-4">
-            <!-- 컴팩트한 초승달 브랜드 엠블럼 (인라인 SVG 백포켓 탑재 - 파일 로드 404 차단) -->
-            <div class="mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-amber-500/30 bg-mystic-800/50 flex items-center justify-center shadow-lg shadow-amber-500/5 overflow-hidden pulse-gold">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-8 h-8 sm:w-10 sm:h-10 text-amber-300 fill-current filter drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
-                    <path d="M50 15C31.5 15 15 31.5 15 50C15 65.4 25.4 78.4 39.5 82.8C35.9 77.2 33.8 70.6 33.8 63.5C33.8 41.5 51.8 23.5 73.8 23.5C79.8 23.5 85.5 24.8 90.5 27.2C82.5 19.8 71.8 15 60 15C56.6 15 53.3 15.5 50 15Z" />
-                </svg>
+    <main class="flex-grow">
+        <!-- ============================== 히어로 ============================== -->
+        <section class="um-hero">
+            <div class="um-hero-glow" aria-hidden="true"></div>
+            <div class="um-wrap um-hero-inner">
+                <span class="um-pill"><i aria-hidden="true"></i>100% 평생 무료 · 회원가입 없음 · 기기 내 로컬 즉시 연산</span>
+                <h1 class="um-title">태어난 순간의 명(命),<br><em>나만의 운명 나침반</em></h1>
+                <p class="um-sub">복잡하고 난해한 정통 사주명리학을 단정하고 편안하게. 사주 8글자 4주 원국 오행 분포부터 30대 그랜드 대운문 풀이까지, 기기 안에서 안전하고 명쾌하게 분석해 드립니다.</p>
+                <div class="um-hero-stats">
+                    <span class="um-hero-stat">🔒 개인정보 비저장</span>
+                    <span class="um-hero-stat">⚡ 0.04초 즉시 연산</span>
+                    <span class="um-hero-stat">📜 정통 명리학 30대 리포트</span>
+                </div>
             </div>
+        </section>
 
-            <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[10px] sm:text-xs font-semibold text-amber-300 tracking-wide shadow-sm">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400 animate-pulse"></i>
-                <span>🎁 100% 평생 무료 · 회원가입 없음</span>
+        <!-- ============================== 만세력 콘솔 (계산기) ============================== -->
+        <section class="um-wrap" id="form-section">
+            <div class="um-console">
+                <div class="um-console-head">
+                    <div>
+                        <div class="um-console-title">
+                            <span aria-hidden="true">🔮</span>
+                            <h2>나만의 평생 사주 &amp; 운명 즉시 해독</h2>
+                            <span class="um-tag">정밀 만세력 4.0</span>
+                        </div>
+                        <p class="um-console-sub">생년월일시 4가지만 입력하면 음양오행 및 30대 대운문 심층 풀이가 즉각 로컬 연산됩니다.</p>
+                    </div>
+                    <span class="um-engine"><i aria-hidden="true"></i>2026 병오(丙午)년 만세력 가동 중</span>
+                </div>
+
+                <div class="um-status">
+                    <div class="um-status-txt">✅ <strong>사주 8글자 4주 원국 정밀 엔진 탑재:</strong> 년주(연간·연지) · 월주(월간·월지) · 일주(본원) · 시주(말년)</div>
+                    <div class="um-status-chip">예상 연산속도: 0.04초 (완전 무료)</div>
+                </div>
+
+                <form id="saju-form" class="um-form" onsubmit="handleAnalyze(event)">
+                    <!-- 1. 성별 -->
+                    <div class="um-field">
+                        <span class="um-label">1. 성별 선택</span>
+                        <div class="um-seg">
+                            <label>
+                                <input type="radio" name="gender" value="M" checked>
+                                <span class="um-seg-face">남성 <i style="font-style:normal;color:var(--gold)">(陽)</i></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="F">
+                                <span class="um-seg-face">여성 <i style="font-style:normal;color:var(--jade-lt)">(陰)</i></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. 양력 / 음력 -->
+                    <div class="um-field">
+                        <span class="um-label">2. 양력 / 음력 <span class="um-mini">윤달 자동 판정</span></span>
+                        <div class="um-seg">
+                            <label>
+                                <input type="radio" name="calendar_type" value="solar" checked onchange="toggleLeapMonth()">
+                                <span class="um-seg-face">☀️ 양력 (Solar)</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="calendar_type" value="lunar" onchange="toggleLeapMonth()">
+                                <span class="um-seg-face">🌙 음력 (Lunar)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. 생년월일 -->
+                    <div class="um-field um-field-date">
+                        <span class="um-label">3. 생년월일 (년 / 월 / 일)</span>
+                        <div class="um-triple">
+                            <select id="birth-year" class="um-select" aria-label="출생 연도" required></select>
+                            <select id="birth-month" class="um-select" aria-label="출생 월" required></select>
+                            <select id="birth-day" class="um-select" aria-label="출생 일" required></select>
+                        </div>
+                        <label class="um-leap hidden" id="leap-month-container">
+                            <input type="checkbox" id="is_leap_month">
+                            <span class="um-leap-box" aria-hidden="true"></span>
+                            <span class="um-leap-txt">해당 출생월이 음력 <strong>윤달(閏月)</strong>이 맞습니다</span>
+                        </label>
+                    </div>
+
+                    <!-- 4. 출생 시간 -->
+                    <div class="um-field um-field-time">
+                        <span class="um-label">4. 출생 시간 (12시진)
+                            <label class="um-mini" style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;color:var(--tx-3)">
+                                <input type="checkbox" id="time-unknown" onchange="toggleTimeInput()" style="accent-color:#E2B857">
+                                출생 시간 모름 (삼주 분석)
+                            </label>
+                        </span>
+                        <div id="time-input-container">
+                            <select id="birth-time-sijin" class="um-select" aria-label="출생 시진">
+                                <option value="23">자시 (子時) : 23:00 ~ 00:59 (쥐)</option>
+                                <option value="1">축시 (丑時) : 01:00 ~ 02:59 (소)</option>
+                                <option value="3">인시 (寅時) : 03:00 ~ 04:59 (호랑이)</option>
+                                <option value="5">묘시 (卯時) : 05:00 ~ 06:59 (토끼)</option>
+                                <option value="7">진시 (辰時) : 07:00 ~ 08:59 (용)</option>
+                                <option value="9">사시 (巳時) : 09:00 ~ 10:59 (뱀)</option>
+                                <option value="11" selected>오시 (午時) : 11:00 ~ 12:59 (말)</option>
+                                <option value="13">미시 (未時) : 13:00 ~ 14:59 (양)</option>
+                                <option value="15">신시 (申時) : 15:00 ~ 16:59 (원숭이)</option>
+                                <option value="17">유시 (酉時) : 17:00 ~ 18:59 (닭)</option>
+                                <option value="19">술시 (戌時) : 19:00 ~ 20:59 (개)</option>
+                                <option value="21">해시 (亥時) : 21:00 ~ 22:59 (돼지)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="um-form-foot" style="grid-column:1/-1">
+                        <span class="um-privacy">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4EDEA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                            개인정보 비저장 · 브라우저 메모리에서 연산 후 즉시 파기 (철저한 익명 보장)
+                        </span>
+                        <button class="um-submit" type="submit">✨ 내 평생 운명 해독하기 (100% 무료)</button>
+                    </div>
+                </form>
             </div>
+        </section>
 
-            <h1 class="font-serif-kr text-lg sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-snug text-white/95 break-keep">
-                태어난 순간 펼쳐지는 <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-200">나만의 고유한 운명과 매일의 기회</span>를 읽어냅니다
-            </h1>
+        <!-- ============================== 4대 성전 바로가기 ============================== -->
+        <section class="um-wrap" aria-label="4대 성전 바로가기">
+            <div class="um-hall-nav">
+                <span class="um-hall-nav-label">30대 대운문 성전</span>
+                <div class="um-hall-nav-btns">
+                    <button class="hall-btn" type="button" id="btn-hall-destiny" onclick="switchTab('hall-destiny')">🏛️ 제1성전 · 선천 운명 설계 (8)</button>
+                    <button class="hall-btn" type="button" id="btn-hall-life" onclick="switchTab('hall-life')">💼 제2성전 · 실전 사회 생활 (8)</button>
+                    <button class="hall-btn" type="button" id="btn-hall-modern" onclick="switchTab('hall-modern')">🧘 제3성전 · 현대 라이프 해독 (8)</button>
+                    <button class="hall-btn" type="button" id="btn-hall-mystic" onclick="switchTab('hall-mystic')">🔮 제4성전 · 동서양 신비 운명 (6)</button>
+                </div>
+            </div>
+        </section>
 
-            <p class="text-xs sm:text-sm text-gray-400/90 max-w-2xl mx-auto leading-relaxed break-keep font-light">
-                명리학 만세력 연산부터 작명, 궁합, 풍수, 타로까지 <span class="font-medium text-amber-200">30가지 그랜드 운세</span>를 제한 없이 자유롭게 열람해 보세요.
-            </p>
+        <!-- ============================== 애드센스 슬롯 ============================== -->
+        <aside class="ad-slot">
+            <p class="ad-label">Advertisement</p>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3122957517118825" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        </aside>
+
+        <!-- ============================== 30대 정밀 리포트 결과지 (엔진 연동) ============================== -->
+<section id="result-section" class="hidden max-w-7xl mx-auto px-4 space-y-8 animate-fade-in clear-both hall-destiny-active">
+        <!-- 리포트 상단 툴바 (인쇄 · 요약 복사 · 목차) -->
+        <div class="um-report-bar no-print">
+            <span class="um-report-bar-title"><span aria-hidden="true">📑</span> 정밀 리포트 열람 중</span>
+            <div class="um-report-bar-actions">
+                <button class="um-btn-ghost" type="button" onclick="copySummaryToClipboard()">📋 사주 요약 복사</button>
+                <button class="um-btn-ghost" type="button" onclick="window.print()">🖨️ 인쇄 · PDF 저장</button>
+                <button class="um-btn-ghost" type="button" onclick="scrollToSection('grand-directory')">🧭 다른 운세 보기</button>
+            </div>
         </div>
-    </section>
-
-    
-
-    <!-- ===================== [수정됨] Jaypromax 스타일 최고급 2단 통합 그리드 레이아웃 (모바일-계산기 상단 배치 / PC-사이드바 대칭) ===================== -->
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 py-8">
-        
-        <!-- 좌측 컬럼 (메인 콘텐츠: 결과창, 오늘의 놀이터, 대표 운세 카드) - 모바일에서는 계산기 아래(order-2), PC에서는 좌측(lg:order-1) -->
-        <div class="lg:col-span-8 order-2 lg:order-1 space-y-8">
-            
-            <!-- [1] 정밀 운세 결과 섹션 (기본 샘플 자동 활성 탑재) -->
-            <main id="result-section" class="hidden max-w-7xl mx-auto px-4 space-y-8 animate-fade-in clear-both hall-destiny-active">
         <!-- 🪐 수호 성전 결과 탭 25~30 적용 -->
         
         <!-- 🪐 NEW 탭 25: 동양의 신비 정통 당사주 (Tab TangSaju) -->
@@ -457,37 +613,10 @@
                 </div>
             </div>
 
-            <!-- 4대 성전 대형 셀렉터 그리드 -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                <!-- 제 1성전 -->
-                <button type="button" onclick="switchTab('hall-destiny')" id="btn-hall-destiny" class="hall-btn p-4 rounded-2xl border-2 border-amber-500 bg-gradient-to-br from-amber-500/20 via-yellow-500/10 to-amber-500/20 text-amber-300 font-bold flex flex-col items-center justify-center text-center gap-2 transition shadow-lg shadow-amber-500/20 active:scale-95 cursor-pointer">
-                    <span class="text-3xl">🏛️</span>
-                    <span class="text-xs sm:text-sm font-serif-kr">제 1성전</span>
-                    <span class="text-[10px] text-gray-300 font-normal leading-tight">선천적 운명 설계당<br>(오행/격국/평생/대운 등)</span>
-                </button>
-                <!-- 제 2성전 -->
-                <button type="button" onclick="switchTab('hall-life')" id="btn-hall-life" class="hall-btn p-4 rounded-2xl border border-white/10 bg-white/5 text-gray-300 font-bold flex flex-col items-center justify-center text-center gap-2 transition hover:bg-white/10 active:scale-95 cursor-pointer">
-                    <span class="text-3xl">💼</span>
-                    <span class="text-xs sm:text-sm font-serif-kr">제 2성전</span>
-                    <span class="text-[10px] text-gray-400 font-normal leading-tight">실전 사회 생활 명당<br>(작명/궁합/토정/재물 등)</span>
-                </button>
-                <!-- 제 3성전 -->
-                <button type="button" onclick="switchTab('hall-modern')" id="btn-hall-modern" class="hall-btn p-4 rounded-2xl border border-white/10 bg-white/5 text-gray-300 font-bold flex flex-col items-center justify-center text-center gap-2 transition hover:bg-white/10 active:scale-95 cursor-pointer">
-                    <span class="text-3xl">🧘</span>
-                    <span class="text-xs sm:text-sm font-serif-kr">제 3성전</span>
-                    <span class="text-[10px] text-gray-400 font-normal leading-tight">현대 라이프 해독궁<br>(체질/풍수/삼재/전생 등)</span>
-                </button>
-                <!-- 제 4성전 -->
-                <button type="button" onclick="switchTab('hall-mystic')" id="btn-hall-mystic" class="hall-btn p-4 rounded-2xl border border-white/10 bg-white/5 text-gray-300 font-bold flex flex-col items-center justify-center text-center gap-2 transition hover:bg-white/10 active:scale-95 cursor-pointer">
-                    <span class="text-3xl">🔮</span>
-                    <span class="text-xs sm:text-sm font-serif-kr">제 4성전</span>
-                    <span class="text-[10px] text-gray-400 font-normal leading-tight">동서양 신비 운명관<br>(당사주/수비학/차크라 등)</span>
-                </button>
-            </div>
-
+            
             <!-- 🌟 실시간 미니 목차 가이드 (Table of Contents) -->
             <div class="bg-mystic-900/50 rounded-2xl p-4 border border-white/5 space-y-2 text-xs text-gray-300">
-                <div class="font-bold text-amber-300 flex items-center gap-1.5"><i data-lucide="compass" class="w-4 h-4 animate-spin"></i> 현재 선택된 성전의 정밀 리포트 바로가기 목차</div>
+                <div class="font-bold text-amber-300 flex items-center gap-1.5"><i data-lucide="compass" class="w-4 h-4"></i> 현재 선택된 성전의 정밀 리포트 바로가기 목차 (30개 전편 무료)</div>
                 
                 <!-- 제 1성전 목차 -->
                 <div id="toc-hall-destiny" class="toc-list flex flex-wrap gap-2">
@@ -1069,10 +1198,104 @@
             </div>
             </div>
         </div>
-        </main>
+        </section>
 
-            <!-- [2] 오늘 바로 보는 무료 운세 광장 (Daily Fortune Plaza) -->
-            <section id="daily-plaza-section" class="w-full">
+        <!-- ============================== 오늘의 데일리 운세 라운지 ============================== -->
+        <section class="um-section" id="daily-lounge-section">
+            <div class="um-wrap">
+                <div class="um-lounge-head">
+                    <div>
+                        <p class="um-eyebrow">Daily Fortune Lounge</p>
+                        <h2 class="um-h2"><span class="um-ico" aria-hidden="true">🌾</span>오늘의 데일리 운세 라운지</h2>
+                        <p class="um-lead" id="lounge-ganji" style="margin-top:8px"></p>
+                    </div>
+                    <div class="um-hero-stats">
+                        <span class="um-hero-stat">🩸 A형 <strong style="color:#FFA9B6;margin-left:2px">대길(大吉)</strong></span>
+                        <span class="um-hero-stat">🧭 행운방위 <strong style="color:var(--gold);margin-left:2px">남동쪽</strong></span>
+                        <span class="um-hero-stat">🎨 개운색 <strong style="color:var(--gold-lt);margin-left:2px">청록·골드</strong></span>
+                        <span class="um-hero-stat">🔄 매일 자정 갱신</span>
+                    </div>
+                </div>
+
+                <div class="um-lounge-grid">
+                    <!-- 카드 1 · 오늘의 타로 -->
+                    <article class="um-lcard">
+                        <div class="um-lcard-top"><span aria-hidden="true">🃏</span> 오늘의 타로</div>
+                        <h3>3장 마스터 카드 뽑기</h3>
+                        <p>카드를 클릭하여 뒤집어보세요. 조화·극복·결실을 상징하는 카드가 즉각 활성화됩니다.</p>
+                        <div class="um-tarot-row">
+                            <div class="um-flip" id="mini-tarot-1" onclick="flipTarotCard(1)" role="button" tabindex="0" aria-label="1번 카드 뒤집기" onkeypress="if(event.key==='Enter')flipTarotCard(1)">
+                                <div class="um-flip-in">
+                                    <div class="um-flip-face um-flip-front"><span aria-hidden="true">🌟</span>조화<span>탭하여 뒤집기</span></div>
+                                    <div class="um-flip-face um-flip-back"><span aria-hidden="true">☀️</span><strong>THE SUN</strong><i>순조로운 화합</i></div>
+                                </div>
+                            </div>
+                            <div class="um-flip" id="mini-tarot-2" onclick="flipTarotCard(2)" role="button" tabindex="0" aria-label="2번 카드 뒤집기" onkeypress="if(event.key==='Enter')flipTarotCard(2)">
+                                <div class="um-flip-in">
+                                    <div class="um-flip-face um-flip-front"><span aria-hidden="true">🛡️</span>극복<span>탭하여 뒤집기</span></div>
+                                    <div class="um-flip-face um-flip-back"><span aria-hidden="true">🦁</span><strong>STRENGTH</strong><i>인내와 지혜</i></div>
+                                </div>
+                            </div>
+                            <div class="um-flip" id="mini-tarot-3" onclick="flipTarotCard(3)" role="button" tabindex="0" aria-label="3번 카드 뒤집기" onkeypress="if(event.key==='Enter')flipTarotCard(3)">
+                                <div class="um-flip-in">
+                                    <div class="um-flip-face um-flip-front"><span aria-hidden="true">🏆</span>결실<span>탭하여 뒤집기</span></div>
+                                    <div class="um-flip-face um-flip-back"><span aria-hidden="true">🌍</span><strong>THE WORLD</strong><i>황금빛 성취</i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="um-mini-foot">
+                            <span>오늘 남은 횟수: <strong style="color:var(--gold-lt)">무제한</strong></span>
+                            <button class="um-btn-ghost" type="button" onclick="resetMiniTarot()">↺ 다시 섞기</button>
+                        </div>
+                    </article>
+
+                    <!-- 카드 2 · 일진 바이오리듬 -->
+                    <article class="um-lcard">
+                        <div class="um-lcard-top"><span aria-hidden="true">☀️</span> 일진 바이오리듬</div>
+                        <h3 id="daily-meter-title" aria-live="polite">재물 88% · 인연 92%</h3>
+                        <p>오후 11시~1시(오시)는 화(火)의 기운이 가장 왕성하여 제안·계약·면접·사랑 고백에 최적의 길시입니다.</p>
+                        <div>
+                            <div class="um-meter">
+                                <div class="um-meter-top"><span>재물운 지수</span><b id="meter-money-pct">88%</b></div>
+                                <div class="um-meter-bar"><i class="um-meter-fill um-fill-gold" id="meter-money-fill" style="width:88%"></i></div>
+                            </div>
+                            <div class="um-meter">
+                                <div class="um-meter-top"><span>인연/협상 지수</span><b id="meter-love-pct">92%</b></div>
+                                <div class="um-meter-bar"><i class="um-meter-fill um-fill-jade" id="meter-love-fill" style="width:92%"></i></div>
+                            </div>
+                            <div class="um-meter">
+                                <div class="um-meter-top"><span>성취/승진 지수</span><b id="meter-achieve-pct">85%</b></div>
+                                <div class="um-meter-bar"><i class="um-meter-fill um-fill-lapis" id="meter-achieve-fill" style="width:85%"></i></div>
+                            </div>
+                        </div>
+                        <div class="um-time-row">
+                            <div class="um-time good"><b>✨ 길시 11:00~13:00</b><span>오시(午時) · 계약·면접 최적</span></div>
+                            <div class="um-time warn"><b>⚠️ 주의 21:00~23:00</b><span>해시(亥時) · 충동 결정 금지</span></div>
+                        </div>
+                        <div class="um-mini-foot">
+                            <span>황금 행운 시간: <strong style="color:var(--jade-lt)">오시(午時)</strong></span>
+                            <button class="um-btn-ghost" type="button" onclick="selectSajuMenu('daily')">정밀 시간표 →</button>
+                        </div>
+                    </article>
+
+                    <!-- 카드 3 · 12간지 띠별 대길 예보 -->
+                    <article class="um-lcard">
+                        <div class="um-lcard-top"><span aria-hidden="true">🐯</span> 12간지 띠별 운세</div>
+                        <h3 id="zodiac-title">오늘의 대길띠: 용띠 · 말띠</h3>
+                        <p>정체되었던 문서나 승인 건이 원만히 해결되는 길운. 띠를 클릭하여 상세 조언을 확인하세요.</p>
+                        <div class="um-zodiac" id="zodiac-grid"></div>
+                        <div class="um-toast" id="zodiac-toast" role="status" aria-live="polite">👆 원하시는 띠를 클릭해 보세요 (실시간 12간지 전원 연산)</div>
+                        <div class="um-mini-foot">
+                            <span>12간지 전원 연산 ✓</span>
+                            <button class="um-btn-ghost" type="button" onclick="showAllZodiacAlert()">전체 보기 →</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== 오늘의 무료 운세 광장 (기존 엔진 연동 · 5종) ============================== -->
+<section id="daily-plaza-section" class="w-full">
         <div class="glass-card rounded-2xl p-5 sm:p-8 border border-amber-500/30 relative overflow-hidden shadow-2xl">
             <!-- 데코 효과 -->
             <div class="absolute -left-20 -bottom-20 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -1376,170 +1599,507 @@
             </div>
         </div>
     </section>
-        </div>
 
-        <!-- 우측 컬럼 (사이드바 - Jaypromax Style Widgets) - 모바일에서는 상단(order-1), PC에서는 우측(lg:order-2) -->
-        <div class="lg:col-span-4 order-1 lg:order-2 space-y-8 no-print">
-            
-            <!-- [위젯 1] 오늘의 운세 계산기 (Jaypromax Style Custom Calculator) -->
-            <div id="form-section" class="bg-gradient-to-br from-indigo-950 to-purple-950 border border-purple-500/30 text-white shadow-xl rounded-2xl p-5 sm:p-6 space-y-4 relative overflow-hidden">
-                <div class="absolute -right-20 -top-20 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="pb-3 border-b border-white/10">
-                    <h4 class="font-serif-kr text-base sm:text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="user-check" class="w-5 h-5 text-purple-300"></i> 나만의 운세 확인하기</h4>
-                    <p class="text-[10px] sm:text-xs text-purple-200/60 mt-0.5">생년월일을 입력하면 바로 확인해드립니다.</p>
-                </div>
-
-                <!-- 실시간 사주계산 폼 주입 -->
-                <form id="saju-form" onsubmit="handleAnalyze(event)" class="space-y-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- ============================== 30대 그랜드 운세 대궐 디렉터리 ============================== -->
+        <section class="um-section" id="grand-directory">
+            <div class="um-wrap">
+                <div class="um-dir-head">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-2 flex items-center gap-1.5"><i data-lucide="user" class="w-3.5 h-3.5 text-amber-400"></i> 성별 (대운 순행/역행 기준)</label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="cursor-pointer select-none"><input type="radio" name="gender" value="M" class="peer hidden" checked><div class="px-4 py-3 rounded-xl border border-white/15 bg-white/5 peer-checked:bg-amber-500/20 peer-checked:border-amber-500 peer-checked:text-amber-300 text-gray-300 text-sm font-medium text-center transition flex items-center justify-center gap-2"><span class="text-base">👨</span> 남성 (陽)</div></label>
-                            <label class="cursor-pointer select-none"><input type="radio" name="gender" value="F" class="peer hidden"><div class="px-4 py-3 rounded-xl border border-white/15 bg-white/5 peer-checked:bg-amber-500/20 peer-checked:border-amber-500 peer-checked:text-amber-300 text-gray-300 text-sm font-medium text-center transition flex items-center justify-center gap-2"><span class="text-base">👩</span> 여성 (陰)</div></label>
-                        </div>
+                        <p class="um-eyebrow">Architectural Directory</p>
+                        <h2 class="um-h2"><span class="um-ico" aria-hidden="true">🧭</span>30대 그랜드 운세 대궐</h2>
+                        <p class="um-lead" id="search-counter" style="margin-top:6px">전체 30개 운세 · 무료 개방</p>
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-2 flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-400"></i> 달력 구분</label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="cursor-pointer select-none"><input type="radio" name="calendar_type" value="solar" class="peer hidden" checked onchange="toggleLeapMonth()"><div class="px-4 py-3 rounded-xl border border-white/15 bg-white/5 peer-checked:bg-amber-500/20 peer-checked:border-amber-500 peer-checked:text-amber-300 text-gray-300 text-sm font-medium text-center transition">☀️ 양력 (Solar)</div></label>
-                            <label class="cursor-pointer select-none"><input type="radio" name="calendar_type" value="lunar" class="peer hidden" onchange="toggleLeapMonth()"><div class="px-4 py-3 rounded-xl border border-white/15 bg-white/5 peer-checked:bg-amber-500/20 peer-checked:border-amber-500 peer-checked:text-amber-300 text-gray-300 text-sm font-medium text-center transition">🌙 음력 (Lunar)</div></label>
-                        </div>
+                    <div class="um-search">
+                        <svg class="um-search-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                        <input id="grand-fortune-search" type="text" inputmode="search" autocomplete="off"
+                               placeholder="운세 검색 (예: 궁합, 재물, 토정비결, 건강)"
+                               aria-label="30대 운세 검색" oninput="filterFortuneItems(this.value)">
+                        <button class="um-search-clear" id="search-clear-btn" type="button" onclick="clearFortuneSearch()" aria-label="검색어 지우기">✕</button>
                     </div>
                 </div>
 
-                <div id="leap-month-container" class="hidden p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 animate-fade-in">
-                    <label class="flex items-center space-x-3 cursor-pointer select-none">
-                        <input type="checkbox" id="is_leap_month" class="peer hidden">
-                        <div class="w-6 h-6 rounded border border-gray-600 flex items-center justify-center peer-checked:bg-amber-500 peer-checked:border-amber-500 transition"><i data-lucide="check" class="w-4 h-4 text-mystic-900 font-bold"></i></div>
-                        <div class="flex items-center space-x-2 text-sm text-amber-300"><i data-lucide="help-circle" class="w-4 h-4 text-amber-400"></i><span>해당 출생월이 음력 <strong>윤달(閏月)</strong>이 맞습니까?</span></div>
-                    </label>
+                <div class="um-temples" id="temple-tab-bar" role="tablist" aria-label="4대 성전">
+            <button class="um-temple is-active" id="btn-temple-1" type="button" role="tab"
+                    aria-selected="true" aria-controls="temple-panel-1" onclick="selectTemple(1)">
+                <span aria-hidden="true">🏛️</span> 제1성전: 선천 운명
+            </button>
+            <button class="um-temple" id="btn-temple-2" type="button" role="tab"
+                    aria-selected="false" aria-controls="temple-panel-2" onclick="selectTemple(2)">
+                <span aria-hidden="true">💼</span> 제2성전: 실전 사회
+            </button>
+            <button class="um-temple" id="btn-temple-3" type="button" role="tab"
+                    aria-selected="false" aria-controls="temple-panel-3" onclick="selectTemple(3)">
+                <span aria-hidden="true">🧘</span> 제3성전: 현대 라이프
+            </button>
+            <button class="um-temple" id="btn-temple-4" type="button" role="tab"
+                    aria-selected="false" aria-controls="temple-panel-4" onclick="selectTemple(4)">
+                <span aria-hidden="true">🔮</span> 제4성전: 동서양 신비
+            </button>
                 </div>
 
-                <div class="grid grid-cols-3 gap-3">
-                    <div>
-                        <label class="block text-xs text-gray-400 mb-1.5">출생 연도</label>
-                        <select id="birth-year" required class="w-full bg-mystic-900 border border-white/20 rounded-xl px-2.5 py-3 text-sm text-white font-medium focus:border-amber-500 focus:outline-none"></select>
-                    </div>
-                    <div>
-                        <label class="block text-xs text-gray-400 mb-1.5">출생 월</label>
-                        <select id="birth-month" required class="w-full bg-mystic-900 border border-white/20 rounded-xl px-2.5 py-3 text-sm text-white font-medium focus:border-amber-500 focus:outline-none"></select>
-                    </div>
-                    <div>
-                        <label class="block text-xs text-gray-400 mb-1.5">출생 일</label>
-                        <select id="birth-day" required class="w-full bg-mystic-900 border border-white/20 rounded-xl px-2.5 py-3 text-sm text-white font-medium focus:border-amber-500 focus:outline-none"></select>
-                    </div>
+            <div class="um-temple-panel is-active" id="temple-panel-1" data-temple="1">
+                <div class="um-panel-meta">
+                    <span>오행 균형 / 격국 용신 / 평생 총운 / 10년 대운 / 2026 병오 세운</span>
+                    <b>8개 대운문 전체 개방 ✓</b>
                 </div>
-
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center">
-                        <label class="block text-xs font-semibold text-gray-300 flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i> 출생 시간 (시/분)</label>
-                        <label class="flex items-center space-x-1.5 cursor-pointer text-xs text-amber-300 hover:text-amber-200"><input type="checkbox" id="time-unknown" onchange="toggleTimeInput()" class="rounded border-gray-600 bg-mystic-900 text-amber-500 focus:ring-amber-500"><span>출생 시간을 모름 (시주 제외 3주 분석)</span></label>
-                    </div>
-                    <div id="time-input-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <div class="sm:col-span-2">
-                            <select id="birth-time-sijin" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2.5 text-sm text-white focus:border-amber-500 focus:outline-none">
-                                <option value="23">자시 (子時) : 23:00 ~ 00:59 (쥐) - 야자시/조자시 구분</option>
-                                <option value="1">축시 (丑時) : 01:00 ~ 02:59 (소)</option>
-                                <option value="3">인시 (寅時) : 03:00 ~ 04:59 (호랑이)</option>
-                                <option value="5">묘시 (卯時) : 05:00 ~ 06:59 (토끼)</option>
-                                <option value="7">진시 (辰時) : 07:00 ~ 08:59 (용)</option>
-                                <option value="9">사시 (巳時) : 09:00 ~ 10:59 (뱀)</option>
-                                <option value="11" selected>오시 (午時) : 11:00 ~ 12:59 (말)</option>
-                                <option value="13">미시 (未時) : 13:00 ~ 14:59 (양)</option>
-                                <option value="15">신시 (申時) : 15:00 ~ 16:59 (원숭이)</option>
-                                <option value="17">유시 (酉時) : 17:00 ~ 18:59 (닭)</option>
-                                <option value="19">술시 (戌時) : 19:00 ~ 20:59 (개)</option>
-                                <option value="21">해시 (亥時) : 21:00 ~ 22:59 (돼지)</option>
-                            </select>
+                <div class="um-grid">
+                    <article class="um-fcard fortune-card" data-keywords="오행 균형 분포 상생 상극 8글자">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">01</span><span>📊 오행 균형 & 심층 진단</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>사주 8글자 목화토금수 분포 과다·부족 판정과 상생상극 원리 대조</p>
                         </div>
-                    </div>
-                </div>
-
-
-
-                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:via-yellow-400 hover:to-amber-500 text-mystic-900 font-extrabold text-[12px] sm:text-base md:text-lg shadow-xl shadow-amber-500/20 flex items-center justify-center gap-1.5 transition transform active:scale-[0.99] pulse-gold whitespace-nowrap">
-                    <i data-lucide="sparkles" class="w-5 h-5 block flex-shrink-0 align-middle"></i><span>🔮 내 평생 운명 해독하기 (100% 무료)</span>
-                </button>
-            </form>
-            </div>
-
-            <!-- [위젯 2] 30대 그랜드 운세 메뉴 선택기 (Dashboard Sidebar Navigation) -->
-            <div class="glass-card rounded-2xl p-5 border border-purple-500/20 space-y-4 shadow-xl relative overflow-hidden">
-                <div class="absolute -right-20 -bottom-20 w-40 h-40 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="flex items-center space-x-2.5 pb-2.5 border-b border-white/10">
-                    <div class="p-2 rounded-xl bg-purple-500/20 text-purple-300"><i data-lucide="compass" class="w-5 h-5 block flex-shrink-0 align-middle"></i></div>
-                    <div>
-                        <h4 class="font-serif-kr text-sm sm:text-base font-bold text-white">🧭 30대 운세 메뉴 선택기</h4>
-                        <p class="text-[10px] text-gray-400">원하는 종류를 터치하면 즉시 해독서가 개방됩니다.</p>
-                    </div>
-                </div>
-                
-                <div class="max-h-[380px] overflow-y-auto pr-1 space-y-4 scrollbar-thin text-xs text-left">
-                    <!-- 제 1성전 -->
-                    <div class="space-y-1.5">
-                        <span class="text-[10px] font-extrabold text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded block w-max uppercase tracking-wider">🏛️ 제 1성전: 선천 운명 설계 (8)</span>
-                        <div class="divide-y divide-white/5 pl-1">
-                            <div id="side-item-oheng" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('oheng')"><span>📊 1. 오행 균형 &amp; 심층 진단</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-sipsin" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('sipsin')"><span>🧭 2. 격국 &amp; 용신 분석</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-life" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('life')"><span>🌅 3. 평생 4대운세 로드맵</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-sinsal" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('sinsal')"><span>⚡ 4. 15대 신살 &amp; 합충</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-ilju" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('ilju')"><span>👤 5. 나만의 일주 심층 해독</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-daeun" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('daeun')"><span>📈 6. 10년 단위 대운 흐름</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-seun" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('seun')"><span>📅 7. 신년 세운 &amp; 월별 흐름</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-guide" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('guide')"><span>🍀 8. 맞춤 인생 개운법 처방</span><span class="text-[9px] text-amber-300 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="oheng">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="격국 용신 희신 기신 그릇 사주">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">02</span><span>🧭 격국 & 용신 분석</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>월지 기준 사주의 그릇과 나를 살리는 1순위 핵심 용신 판정</p>
                         </div>
-                    </div>
-                    
-                    <!-- 제 2성전 -->
-                    <div class="space-y-1.5 pt-1">
-                        <span class="text-[10px] font-extrabold text-pink-300 bg-pink-500/10 border border-pink-500/20 px-2 py-0.5 rounded block w-max uppercase tracking-wider">💼 제 2성전: 실전 사회 생활 (8)</span>
-                        <div class="divide-y divide-white/5 pl-1">
-                            <div id="side-item-naming" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('naming')"><span>✍️ 9. 작명·개명 성명학 감정</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-gunghap" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('gunghap')"><span>💘 10. 미래 배우자 &amp; 궁합</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-child" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('child')"><span>🍼 11. 자녀복 &amp; 자녀 지도법</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-celebrity" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('celebrity')"><span>👑 12. 나와 닮은 위인 매칭</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-daily" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('daily')"><span>☀️ 13. 오늘의 일진 바이오</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-tojung" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('tojung')"><span>📜 14. 정통 토정비결 144괘</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-wealth" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('wealth')"><span>💰 15. 평생 재물운 &amp; 수완</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-taegil" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('taegil')"><span>📅 16. 수호 이사·결혼 택일</span><span class="text-[9px] text-pink-300 font-bold bg-pink-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="sipsin">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="평생 총운 초년 청년 장년 말년 4단계">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">03</span><span>🌅 평생 4대운세 로드맵</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>초년·청년·장년·말년 4기둥의 에너지를 꿰뚫는 평생 로드맵</p>
                         </div>
-                    </div>
-
-                    <!-- 제 3성전 -->
-                    <div class="space-y-1.5 pt-1">
-                        <span class="text-[10px] font-extrabold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded block w-max uppercase tracking-wider">🧘 제 3성전: 현대 라이프 해독 (8)</span>
-                        <div class="divide-y divide-white/5 pl-1">
-                            <div id="side-item-health" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('health')"><span>🩹 17. 오행 장부 건강 체질</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-dream" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('dream')"><span>😴 18. 길흉 화복 꿈해몽 대조</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-pungsu" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('pungsu')"><span>🏠 19. 양택 풍수 인테리어</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-samjae" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('samjae')"><span>👺 20. 신비 삼재비방 액막이</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-career" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('career')"><span>💼 21. 취업·이직·승진 적성</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-luckynum" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('luckynum')"><span>📞 22. 행운 전화번호 끝자리</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-pet" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('pet')"><span>🐾 23. 반려동물 수호 띠 궁합</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-pastlife" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('pastlife')"><span>✨ 24. 나의 전생 스토리</span><span class="text-[9px] text-emerald-300 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="life">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="신살 15대 역마 도화 화개 백호 길신 흉살">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">04</span><span>⚡ 15대 신살 & 합충</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>역마·도화·화개 등 15대 길신과 천간지지 합충형파해 정밀 검증</p>
                         </div>
-                    </div>
-
-                    <!-- 제 4성전 -->
-                    <div class="space-y-1.5 pt-1">
-                        <span class="text-[10px] font-extrabold text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 rounded px-2 py-0.5 block w-max uppercase tracking-wider">🔮 제 4성전: 동서양 신비 운명 (6)</span>
-                        <div class="divide-y divide-white/5 pl-1">
-                            <div id="side-item-tangsaju" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('tangsaju')"><span>📜 25. 동양 전통 그림 당사주</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-numerology" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('numerology')"><span>🔢 26. 유럽식 탄생일 운명수</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-chakra" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('chakra')"><span>🧘 27. 인도 수호 차크라</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-celtictree" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('celtictree')"><span>🌲 28. 북유럽 생일 수호나무</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-guardianbeast" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('guardianbeast')"><span>🐲 29. 평생 수호 신수 오라클</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
-                            <div id="side-item-cheoneulgwiin" class="py-2.5 flex items-center justify-between cursor-pointer hover:text-purple-300 font-medium text-gray-300" onclick="selectSajuMenu('cheoneulgwiin')"><span>🤝 30. 천을귀인 만남 &amp; 방향</span><span class="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 px-1.5 py-0.5 rounded">체험✓</span></div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="sinsal">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="일주 심층 60갑자 본원 성격 기질 장점 단점">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">05</span><span>👤 나만의 일주 심층 해독</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>60갑자 본원(일간) 심층 프로필 및 핵심 강점과 주의점 도출</p>
                         </div>
-                    </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="ilju">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="10년 대운 흐름 성패 주기 타임라인 외부 환경">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">06</span><span>📈 10년 단위 대운 흐름</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>외부 환경의 변화와 실질적 성패를 좌우하는 대운 8단계 타임라인</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="daeun">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="2026 병오 세운 신년운세 붉은말 월별 운세">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">07</span><span>📅 신년 세운 & 월별 흐름</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>붉은 말의 해 총운 평점 및 12개월 월별 간지 운세 상세 타임라인</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="seun">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="개운 처방 행운 색상 방위 숫자 음식">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">08</span><span>🍀 맞춤 인생 개운법 처방</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>행운의 색상, 방위, 숫자, 체질 보완 음식 및 금기 사항 가이드</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="guide">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="um-temple-panel" id="temple-panel-2" data-temple="2">
+                <div class="um-panel-meta">
+                    <span>정통 성명학 / 궁합 / 토정비결 / 재물 수완 / 대길 택일</span>
+                    <b>8개 대운문 전체 개방 ✓</b>
+                </div>
+                <div class="um-grid">
+                    <article class="um-fcard fortune-card" data-keywords="작명 개명 성명학 발음 오행 한자">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">09</span><span>✍️ 작명·개명 성명학 감정</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>발음 오행과 용신 조화도 채점 및 100% 보완 길자 15선</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="naming">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="배우자 연인 궁합 연애 결혼 합충">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">10</span><span>💘 미래 배우자 & 궁합</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>일간·일지 합충 및 예상 배우자 직업군, 결혼 적령기 골든타임</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="gunghap">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="자녀복 교육법 자녀궁 시주 식상 관성">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">11</span><span>🍼 자녀복 & 자녀 지도법</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>자녀궁(시주)과 식상·관성 해독으로 읽는 부모-자식 상생 비결</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="child">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="역사 위인 매칭 리더 롤모델 명언">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">12</span><span>👑 나와 닮은 위인 매칭</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>나의 기질과 일치하는 역사적 리더 롤모델 및 운명 명언 3선</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="celebrity">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="일진 바이오리듬 재물 관계 길시 시간">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">13</span><span>☀️ 오늘의 일진 바이오</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>재물 88%, 관계 92% 마스터 총평과 최고 행운 시간대 분석</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="daily">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="토정비결 144괘 이지함 상반기 하반기 시운">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">14</span><span>📜 정통 토정비결 144괘</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>이지함 선생 비전 연산, 상·하반기 시운 및 월별 핵심 구결</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="tojung">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="재물운 재테크 편재 정재 식상 탈재 황금기 돈">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">15</span><span>💰 평생 재물운 & 수완</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>편재·정재와 식상 분석, 인생 최고의 재물 황금기 및 탈재 경고</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="wealth">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="이사 결혼 택일 손없는날 길일 날짜">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">16</span><span>📅 수호 이사·결혼 택일</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>한국 정통 손 없는 날과 사주 맞춤 상생 대길일 캘린더 추출</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="taegil">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                </div>
+            </div>
+            <div class="um-temple-panel" id="temple-panel-3" data-temple="3">
+                <div class="um-panel-meta">
+                    <span>체질 건강 / 양택 풍수 / 삼재비방 / 직업 적성 / 반려동물</span>
+                    <b>8개 대운문 전체 개방 ✓</b>
+                </div>
+                <div class="um-grid">
+                    <article class="um-fcard fortune-card" data-keywords="건강 체질 진단 장부 오행 경락 약선 음식">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">17</span><span>🩹 오행 장부 건강 체질</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>12경락 바이오 해독 및 취약 장부 계통 예방 약선 음식 안내</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="health">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="꿈해몽 길몽 흉몽 돼지꿈 로또 행운">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">18</span><span>😴 길흉 화복 꿈해몽 대조</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>돼지·똥·맑은 물 등 100대 꿈해몽 키워드 및 로또 도전 지수</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="dream">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="양택 풍수 인테리어 현관 침실 책상 금전운 수면">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">19</span><span>🏠 양택 풍수 인테리어</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>금전운을 부르는 현관·침실 수면·책상 사무실 성공 기(氣) 배치법</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="pungsu">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="삼재비방 2026 들삼재 묵삼재 날삼재 살풀이">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">20</span><span>👺 신비 삼재비방 액막이</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>2026~2028 삼재 판정 및 흉을 대복으로 전환하는 살풀이</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="samjae">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="이직 직업 적성 천직 취업 합격 조직 규모">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">21</span><span>💼 취업·이직·승진 적성</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>합격운 점수, 나를 귀하게 써줄 추천 조직 규모 및 천직 10선</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="career">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="행운 전화번호 차량 번호 숫자 오행 파동">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">22</span><span>📞 행운 전화번호 끝자리</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>숫자 오행 파동학으로 풀어낸 차량·전화 황금 끝자리 번호</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="luckynum">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="반려동물 띠 궁합 강아지 고양이 이름 작명">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">23</span><span>🐾 반려동물 수호 띠 궁합</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>반려동물 기질 분석 및 복을 부르는 개운 작명 비결</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="pet">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="전생 카르마 숙제 년주 화개살 영혼">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">24</span><span>✨ 나의 전생 스토리</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>년주와 화개살, 편인의 기운으로 푸는 영혼의 현생 카르마 숙제</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="pastlife">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                </div>
+            </div>
+            <div class="um-temple-panel" id="temple-panel-4" data-temple="4">
+                <div class="um-panel-meta">
+                    <span>그림 당사주 / 탄생 운명수 / 차크라 / 수호목 / 귀인</span>
+                    <b>6개 대운문 전체 개방 ✓</b>
+                </div>
+                <div class="um-grid">
+                    <article class="um-fcard fortune-card" data-keywords="당사주 12성수 그림사주 천귀 천파">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">25</span><span>📜 동양 전통 그림 당사주</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>당나라 전통 12성수 비법으로 초·청·중·말년을 직관적으로 해독</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="tangsaju">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="탄생일 운명수 수비학 라이프패스 유럽">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">26</span><span>🔢 유럽식 탄생일 운명수</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>생년월일 수비학으로 환원한 생의 이정표와 우주적 영혼 성향 분석</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="numerology">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="인도 수호 차크라 아우라 에너지 힐링 명상">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">27</span><span>🧘 인도 수호 차크라</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>일간 오행과 에너지 분포로 영혼을 지켜주는 중심 수호 차크라 처방</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="chakra">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="생일 수호나무 북유럽 드루이드 켈트 점성술">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">28</span><span>🌲 북유럽 생일 수호나무</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>고대 켈트 드루이드 자연 점성술로 도출한 나만의 숲속 수호목</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="celtictree">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="수호 신수 오라클 사신 청룡 백호 주작 현무">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">29</span><span>🐲 평생 수호 신수 오라클</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>사신(四神)과 길한 동양 영수를 환원하여 나를 지켜주는 수호령 도출</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="guardianbeast">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="um-fcard fortune-card" data-keywords="천을귀인 만남 길성 귀인 띠 골든타임 방향">
+                        <div>
+                            <div class="um-fcard-top">
+                                <strong><span class="um-ord">30</span><span>🤝 천을귀인 만남 & 방향</span></strong>
+                                <span class="um-badge-free">무료✓</span>
+                            </div>
+                            <p>명리학 최고의 길성 대조, 귀인의 띠와 만남 방향 및 최적 골든타임</p>
+                        </div>
+                        <button class="um-fcard-cta fortune-card-cta" type="button" data-key="cheoneulgwiin">무료 해독하기 <span aria-hidden="true">→</span></button>
+                    </article>
+                </div>
+            </div>
 
-    <!-- Hidden dummy elements to satisfy JS engine requirements and maintain background functions -->
-    <div class="hidden" style="display: none !important;">
+                <div class="um-empty" id="search-empty">🔍 검색어와 일치하는 운세를 찾지 못했습니다. ‘궁합 · 재물 · 건강 · 꿈해몽’ 등으로 다시 검색해 보세요.</div>
+            </div>
+        </section>
+
+        <!-- ============================== 오행 다이어그램 & FAQ ============================== -->
+        <section class="um-section" id="five-elements-section">
+            <div class="um-wrap um-two">
+                <div class="um-panel">
+                    <p class="um-eyebrow">Five Elements</p>
+                    <h3 class="um-h2" style="font-size:clamp(17px,2.6vw,22px);margin-top:6px"><span class="um-ico" aria-hidden="true">☯️</span>사주 오행(五行) 상생상극의 원리</h3>
+                    <p class="um-lead" style="margin-top:10px">모든 인간의 운명은 목(木)·화(火)·토(土)·금(金)·수(水) 다섯 기운의 순환으로 이루어집니다. 내 사주에 부족하거나 과한 기운을 파악해 균형을 맞추는 것이 개운(開運)의 핵심입니다.</p>
+                    <div class="um-oheng">
+                        <div class="um-oheng-item wood"><span aria-hidden="true">🌲</span><b>木 (목)</b><i>성장·추진</i></div>
+                        <div class="um-oheng-item fire"><span aria-hidden="true">🔥</span><b>火 (화)</b><i>열정·확산</i></div>
+                        <div class="um-oheng-item earth"><span aria-hidden="true">⛰️</span><b>土 (토)</b><i>포용·중재</i></div>
+                        <div class="um-oheng-item metal"><span aria-hidden="true">⚔️</span><b>金 (금)</b><i>결단·정리</i></div>
+                        <div class="um-oheng-item water"><span aria-hidden="true">💧</span><b>水 (수)</b><i>지혜·유연</i></div>
+                    </div>
+                    <div class="um-cycle">
+                        <div class="gen"><b>● 상생(相生)</b>목생화 → 화생토 → 토생금 → 금생수 → 수생목 (서로 돕는 흐름)</div>
+                        <div class="ctrl"><b>● 상극(相剋)</b>목극토 → 토극수 → 수극화 → 화극금 → 금극목 (서로 견제하는 흐름)</div>
+                    </div>
+                    <p style="margin-top:16px"><button class="um-link-inline" type="button" onclick="scrollToSection('form-section')">내 만세력에서 5행 분포 확인하기 →</button></p>
+                </div>
+
+                <div class="um-panel">
+                    <p class="um-eyebrow">Knowledge · Q&amp;A</p>
+                    <h3 class="um-h2" style="font-size:clamp(17px,2.6vw,22px);margin-top:6px"><span class="um-ico" aria-hidden="true">💡</span>자주 묻는 질문 (FAQ)</h3>
+                    <p class="um-lead" style="margin-top:10px">운세방앗간 이용자분들이 가장 궁금해하시는 핵심 의문점을 투명하게 정리했습니다.</p>
+                    <div class="um-faq">
+                <div class="um-faq-item is-open" id="faq-item-1">
+                    <button class="um-faq-q" type="button" onclick="toggleFaq(1)" aria-expanded="true">
+                        <span>Q. 정말 회원가입 없이 평생 100% 무료인가요?</span><span aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="um-faq-a">네, 운세방앗간은 학술 연구와 지식 나눔을 목적으로 운영됩니다. 회원가입·휴대폰 인증·유료 결제 유도 없이 30대 그랜드 대운문 전체를 언제나 무료로 열람하실 수 있습니다.</div>
+                </div>
+                <div class="um-faq-item" id="faq-item-2">
+                    <button class="um-faq-q" type="button" onclick="toggleFaq(2)" aria-expanded="false">
+                        <span>Q. 출생 시간을 정확히 모를 때는 어떻게 하나요?</span><span aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="um-faq-a">시간 입력란에서 <strong>‘출생 시간 모름 (삼주 기본 정밀 해독)’</strong>을 선택하시면 됩니다. 년주·월주·일주 3주 6글자만으로도 일간의 본원과 격국, 대운 흐름을 80% 이상의 정확도로 풀이해 드립니다.</div>
+                </div>
+                <div class="um-faq-item" id="faq-item-3">
+                    <button class="um-faq-q" type="button" onclick="toggleFaq(3)" aria-expanded="false">
+                        <span>Q. 입력한 생년월일이 서버에 저장되거나 유출되지 않나요?</span><span aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="um-faq-a">절대 저장되지 않습니다. 모든 만세력 연산은 귀하의 웹 브라우저 로컬 메모리(Client-side Javascript)에서만 즉시 처리되며, 새로고침하거나 탭을 닫으면 즉각 완전 소멸됩니다.</div>
+                </div>
+                <div class="um-faq-item" id="faq-item-4">
+                    <button class="um-faq-q" type="button" onclick="toggleFaq(4)" aria-expanded="false">
+                        <span>Q. 2026 병오(丙午)년 세운은 언제부터 적용되나요?</span><span aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="um-faq-a">정통 명리학에서는 양력 1월 1일이 아닌 24절기 중 <strong>입춘(立春: 통상 2월 4일경)</strong>을 기준으로 새해의 간지(丙午)가 정식 교체됩니다. 본 시스템은 절기력 정밀 시점을 완벽 반영합니다.</div>
+                </div>
+                <div class="um-faq-item" id="faq-item-5">
+                    <button class="um-faq-q" type="button" onclick="toggleFaq(5)" aria-expanded="false">
+                        <span>Q. 30가지 운세는 어떤 것들이 있나요?</span><span aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="um-faq-a">제1성전 <strong>선천 운명 설계</strong>(오행 균형 · 격국 용신 · 평생 총운 · 신살 합충 · 일주 해독 · 10년 대운 · 신년 세운 · 개운 처방), 제2성전 <strong>실전 사회</strong>(작명 · 궁합 · 자녀 · 위인 매칭 · 일진 · 토정비결 · 재물 · 택일), 제3성전 <strong>현대 라이프</strong>(건강 · 꿈해몽 · 풍수 · 삼재 · 취업 적성 · 행운 번호 · 반려동물 · 전생), 제4성전 <strong>동서양 신비</strong>(당사주 · 수비학 · 차크라 · 켈트 수호목 · 수호 신수 · 천을귀인) 총 30종입니다.</div>
+                </div>
+                <div class="um-faq-item" id="faq-item-6">
+                    <button class="um-faq-q" type="button" onclick="toggleFaq(6)" aria-expanded="false">
+                        <span>Q. 모바일에서도 이용할 수 있나요?</span><span aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="um-faq-a">네. 스마트폰 · 태블릿 · PC 모두 동일한 정밀 만세력 연산을 지원합니다. 브라우저 메뉴에서 <strong>‘홈 화면에 추가’</strong>를 선택하면 앱처럼 바로 실행할 수 있습니다.</div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== 3대 신뢰 보증 ============================== -->
+        <section class="um-section">
+            <div class="um-wrap">
+                <div class="um-trust">
+                    <p class="um-eyebrow">Assurance &amp; Integrity</p>
+                    <h2 class="um-h2" style="justify-content:center;margin-top:8px">운세방앗간 3대 신뢰 보증</h2>
+                    <p class="um-lead" style="max-width:62ch;margin:12px auto 0">상업적 결제 유도나 불안 마케팅 없이, 누구나 안심하고 자신의 명(命)을 밝힐 수 있도록 약속합니다.</p>
+                    <div class="um-trust-grid">
+                        <div class="um-trust-card">
+                            <span aria-hidden="true">🛡️</span>
+                            <h4>100% 로컬 암호화 연산</h4>
+                            <p>서버로 일체의 개인정보(생년월일시)를 전송하거나 저장하지 않습니다. 브라우저 메모리에서 연산하고 창을 닫는 즉시 완전 소멸됩니다.</p>
+                        </div>
+                        <div class="um-trust-card">
+                            <span aria-hidden="true">📜</span>
+                            <h4>정통 명리 &amp; 데이터 사이언스</h4>
+                            <p>연해자평·적천수·자평진전 등 정통 사주 원전과 현대 데이터 알고리즘을 결합하여 왜곡 없는 통섭적 분석을 제공합니다.</p>
+                        </div>
+                        <div class="um-trust-card">
+                            <span aria-hidden="true">✨</span>
+                            <h4>평생 100% 무료 나눔 원칙</h4>
+                            <p>회원가입·유료 결제·포인트 유도 없이 30대 그랜드 대운문 전체를 모든 분께 언제나 조건 없이 무료로 공개합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== 하단 광고 ============================== -->
+        <aside class="ad-slot">
+            <p class="ad-label">Advertisement</p>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3122957517118825" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        </aside>
+    </main>
+
+    <!-- ============================== 푸터 ============================== -->
+    <footer class="um-footer">
+        <div class="um-wrap">
+            <div class="um-footer-top">
+                <div class="um-footer-brand">
+                    <span class="um-brand-mark" aria-hidden="true">🌾</span>
+                    <span><b>운세방앗간</b><i>정통 명리학과 데이터 사이언스의 조화</i></span>
+                </div>
+                <nav class="um-footer-links" aria-label="사이트 안내">
+                    <a href="./about.html">서비스 소개</a>
+                    <a href="./privacy.html">개인정보처리방침</a>
+                    <a href="./terms.html">이용약관</a>
+                    <a href="./contact.html">문의하기</a>
+                    <a href="./cookie.html">쿠키 정책</a>
+                    <a href="./ad-policy.html">광고 정책</a>
+                </nav>
+            </div>
+            <p class="um-disclaimer">본 서비스는 개인정보보호법을 철저히 준수하며, 브라우저 클라이언트 로컬 메모리에서만 만세력 알고리즘을 수행합니다. 서버 저장이나 상업적 개인정보 수집 행위가 일절 없습니다. 운세 해독 결과는 삶의 성찰을 돕는 참고 지표이며 맹신을 권장하지 않습니다.</p>
+            <p class="um-copy">© 2025–2026 운세방앗간 (unsemill.com). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ============================== JS 엔진 DOM 보조 스텁 (기능 유지용 · 화면 미노출) ============================== -->
+    <div class="hidden" aria-hidden="true">
         <select id="sidebar-ilju-select"></select>
         <div id="sidebar-ilju-result"></div>
         <p id="sidebar-ilju-title"></p>
@@ -1550,60 +2110,47 @@
         <span id="sidebar-lucky-direction"></span>
         <div id="mobile-drawer-modal"></div>
         <div id="mobile-drawer-panel"></div>
+        <div id="side-item-oheng"></div>
+        <div id="side-item-sipsin"></div>
+        <div id="side-item-life"></div>
+        <div id="side-item-sinsal"></div>
+        <div id="side-item-ilju"></div>
+        <div id="side-item-daeun"></div>
+        <div id="side-item-seun"></div>
+        <div id="side-item-guide"></div>
+        <div id="side-item-naming"></div>
+        <div id="side-item-gunghap"></div>
+        <div id="side-item-child"></div>
+        <div id="side-item-celebrity"></div>
+        <div id="side-item-daily"></div>
+        <div id="side-item-tojung"></div>
+        <div id="side-item-wealth"></div>
+        <div id="side-item-taegil"></div>
+        <div id="side-item-health"></div>
+        <div id="side-item-dream"></div>
+        <div id="side-item-pungsu"></div>
+        <div id="side-item-samjae"></div>
+        <div id="side-item-career"></div>
+        <div id="side-item-luckynum"></div>
+        <div id="side-item-pet"></div>
+        <div id="side-item-pastlife"></div>
+        <div id="side-item-tangsaju"></div>
+        <div id="side-item-numerology"></div>
+        <div id="side-item-chakra"></div>
+        <div id="side-item-celtictree"></div>
+        <div id="side-item-guardianbeast"></div>
+        <div id="side-item-cheoneulgwiin"></div>
     </div>
 
-<div id="loading-overlay" class="hidden fixed inset-0 bg-mystic-900/90 backdrop-blur-md z-50 flex flex-col items-center justify-center text-center p-4">
+    <div id="loading-overlay" class="hidden fixed inset-0 backdrop-blur-md z-50 flex flex-col items-center justify-center text-center p-4">
         <div class="relative w-24 h-24 mb-6 flex items-center justify-center">
-            <div class="absolute inset-0 border-4 border-amber-500/20 border-t-amber-400 rounded-full animate-spin"></div>
-            <div class="text-4xl animate-pulse">🔮</div>
+            <div class="absolute inset-0 border-4 rounded-full animate-spin" style="border-color:rgba(226,184,87,.18);border-top-color:#E2B857"></div>
+            <div class="text-4xl animate-pulse" aria-hidden="true">🔮</div>
         </div>
-        <p class="text-xs text-amber-300/80 mt-3 animate-pulse font-serif-kr">나만의 운명 설계도를 실시간 해독 중입니다...</p>
-</div>
-    <!-- Footer -->
-    <footer class="max-w-7xl mx-auto px-4 py-8 mt-16 border-t border-white/10 text-center text-xs text-gray-500 space-y-3">
-        <p>🌾 <strong>운세방앗간</strong> · 무료 사주팔자 · 평생운세 · 궁합 · 작명 · 꿈해몽 · 토정비결 · 삼재 30대 그랜드 정통 명리 포털</p>
-        <p>모든 운세는 이용자 브라우저에서 직접 계산되며, 입력하신 생년월일시 정보는 외부 서버로 전송·저장되지 않습니다.</p>
-        <nav class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 pt-1 text-gray-400">
-            <a href="./about.html" class="hover:text-amber-300 transition">서비스 소개</a>
-            <span class="text-gray-700">·</span>
-            <a href="./privacy.html" class="hover:text-amber-300 transition">개인정보처리방침</a>
-            <span class="text-gray-700">·</span>
-            <a href="./terms.html" class="hover:text-amber-300 transition">이용약관</a>
-            <span class="text-gray-700">·</span>
-            <a href="./cookie.html" class="hover:text-amber-300 transition">쿠키 정책</a>
-            <span class="text-gray-700">·</span>
-            <a href="./contact.html" class="hover:text-amber-300 transition">문의하기</a>
-            <span class="text-gray-700">·</span>
-            <a href="./ad-policy.html" class="hover:text-amber-300 transition">광고 정책</a>
-        </nav>
-        <p class="text-gray-600 pt-1">본 서비스가 제공하는 운세 해석은 전통 명리학에 기반한 참고 정보이며, 실제 삶의 결정은 이용자 본인의 판단에 따릅니다.</p>
-        <p class="text-gray-600">© 2026 운세방앗간 (unsemill.com). All rights reserved.</p>
-    </footer>
-
-    <!-- 애드센스 광고 렌더링 -->
-    <script>
-        (function(){
-            try {
-                document.querySelectorAll('ins.adsbygoogle').forEach(function(){
-                    (window.adsbygoogle = window.adsbygoogle || []).push({});
-                });
-            } catch(e) { /* 광고 차단 환경 등에서 조용히 무시 */ }
-        })();
-    </script>
-
-
-
-    <!-- ==========================================
-         운세방앗간 정밀 연산 및 UI 제어 JS 엔진
-         ========================================== -->
-    <script src="./js/app.js?v=20260724-120000" defer></script>
-
-    <!-- 🧭 [신규 추가] 모바일 우측 하단 둥둥이 퀵 내비게이터 버튼 (Floating FAB) -->
-    <div class="fixed bottom-6 right-6 z-40 no-print">
-        <button type="button" onclick="scrollToSection('result-section')" class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-500 to-yellow-600 text-mystic-900 shadow-xl shadow-amber-500/30 flex items-center justify-center border border-amber-400/50 hover:scale-105 active:scale-95 transition cursor-pointer pulse-gold" title="내 운명 목차로 이동">
-            <i data-lucide="compass" class="w-5 h-5 block"></i>
-        </button>
+        <p class="text-xs mt-3 animate-pulse" style="color:var(--gold-lt);font-family:var(--f-serif)">나만의 운명 설계도를 실시간 해독 중입니다...</p>
     </div>
 
+    <script src="./js/app.js?v=20261013-1500" defer></script>
+    <script src="./js/redesign.js?v=20261013-1500" defer></script>
 </body>
 </html>
