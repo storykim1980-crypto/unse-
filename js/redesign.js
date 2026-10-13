@@ -348,4 +348,82 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+
+
+  /* ------------------------------------------------------------------
+     이름(선택) 개인화 레이어
+     · 계산 엔진(app.js)은 전혀 건드리지 않고, 표시 계층에서만 이름을 반영합니다.
+     · 이름을 비워 두면 기존과 100% 동일하게 동작합니다.
+     ------------------------------------------------------------------ */
+  var USER_NAME = '';
+  var RAW_TITLE = '';
+
+  function namePrefix() { return USER_NAME ? USER_NAME + '님 · ' : ''; }
+
+  function syncUserTitle() {
+    var t = $('res-user-title');
+    if (!t) return;
+    var cur = t.textContent || '';
+    var want = namePrefix() + RAW_TITLE;
+
+    /* 엔진이 제목을 새로 쓴 경우 감지 (우리가 붙인 접두사는 제외) */
+    if (RAW_TITLE === '' || (cur !== RAW_TITLE && cur !== want)) {
+      RAW_TITLE = USER_NAME && cur.indexOf(namePrefix()) === 0
+        ? cur.slice(namePrefix().length)
+        : cur;
+    }
+    if (USER_NAME) {
+      var finalTitle = USER_NAME + '님 · ' + RAW_TITLE;
+      if (t.textContent !== finalTitle) t.textContent = finalTitle;
+    } else if (t.textContent !== RAW_TITLE) {
+      t.textContent = RAW_TITLE;
+    }
+  }
+
+  function applyUserName() {
+    var input = $('saju-name');
+    USER_NAME = (input && typeof input.value === 'string') ? input.value.trim() : '';
+    if (USER_NAME.length > 20) USER_NAME = USER_NAME.slice(0, 20);
+
+    var bar = $('um-report-user');
+    if (bar) bar.textContent = USER_NAME ? USER_NAME + '님 · ' : '';
+
+    var root = $('result-section');
+    if (root) root.setAttribute('data-user', USER_NAME ? USER_NAME + '님 · ' : '');
+
+    syncUserTitle();
+  }
+
+  function initUserNameField() {
+    var form = $('saju-form');
+    var input = $('saju-name');
+    if (!form || !input) return;
+
+    /* 제출 시점에 이름 캡처 → 엔진 연산이 끝난 뒤 표시에 반영 */
+    form.addEventListener('submit', function () {
+      applyUserName();
+      setTimeout(syncUserTitle, 400);
+      setTimeout(syncUserTitle, 1100);
+      setTimeout(applyUserName, 1500);
+    });
+    input.addEventListener('input', applyUserName);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : form.submit(); }
+    });
+
+    /* 엔진이 결과지 제목을 다시 쓸 때마다 접두사를 재적용 */
+    var title = $('res-user-title');
+    if (title && window.MutationObserver) {
+      var syncing = false;
+      new MutationObserver(function () {
+        if (syncing) return;
+        syncing = true;
+        syncUserTitle();
+        syncing = false;
+      }).observe(title, { childList: true, characterData: true, subtree: true });
+    }
+  }
+
+  initUserNameField();
+  window.__umApplyUserName = applyUserName;
 })();

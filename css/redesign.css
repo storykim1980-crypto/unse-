@@ -627,7 +627,7 @@ a{color:inherit}
 
   /* 4) 리포트 머리글 자동 삽입 */
   #result-section::before{
-    content:"🌾 운세방앗간 · 정밀 만세력 4.0 · 정밀 리포트";
+    content:"🌾 운세방앗간 · " attr(data-user) "정밀 만세력 4.0 · 정밀 리포트";
     display:block;font-family:var(--f-serif);font-size:14pt;font-weight:800;color:#000!important;
     border-bottom:2px solid #111;padding-bottom:6px;margin-bottom:12px
   }
@@ -1235,4 +1235,57 @@ a{color:inherit}
   color:var(--jade-lt);background:var(--celadon-dim);
   border:1px solid rgba(78,222,163,.28);
   padding:4px 8px 3px;border-radius:99px;white-space:nowrap
+}
+
+
+/* ==========================================================================
+   26. 이름 입력 필드 (선택) — 리포트 개인화
+   · 계산에는 관여하지 않고, 결과지 제목·인쇄 머리글에만 표기됩니다.
+   ========================================================================== */
+.um-field-name{grid-column:1/-1}
+.um-label[for="saju-name"]{display:block;cursor:pointer}
+.um-input{
+  width:100%;box-sizing:border-box;
+  background:var(--s-raised);border:1px solid var(--line);border-radius:var(--r);
+  padding:12px 15px;color:var(--tx);
+  font-family:var(--f-sans);font-size:14px;font-weight:600;letter-spacing:-.01em;
+  transition:border-color .2s,box-shadow .2s,background .2s
+}
+.um-input::placeholder{color:var(--tx-3);font-weight:400}
+.um-input:hover{border-color:var(--line-gold)}
+.um-input:focus{
+  outline:none;background:var(--s-elev);
+  border-color:var(--line-gold-strong);box-shadow:0 0 0 3px var(--gold-glow)
+}
+.um-report-bar-title #um-report-user{color:var(--gold-lt);font-weight:800}
+.um-report-bar-title #um-report-user:empty{display:none}
+
+
+/* ==========================================================================
+   27. 헤더 메뉴 겹침 · 밀림 현상 해결
+   · 원인: 헤더 안 [브랜드 + 메뉴 + 우측버튼] 합계가 매 구간에서 14~16px 초과 →
+           flex-shrink 로 메뉴 박스만 줄어들고, 줄어든 만큼 마지막 메뉴 2개
+           (✨ 오늘의 운세 · ☯️ 오행/FAQ)가 우측 버튼 아래로 밀려 가려짐.
+   · 해결: ① 메뉴는 절대 줄어들지 않게 고정(flex-shrink:0)
+           ② 구간별로 여백을 미리 확보(브랜드 태그/버전칩/공유아이콘 정리 + 간격 압축)
+           ③ 헤더 최대 폭을 1280px 로 넓혀 6개 메뉴가 항상 온전히 보이도록 보장
+   ========================================================================== */
+.um-header-in{max-width:1280px}
+.um-nav{flex-shrink:0}          /* 메뉴가 찌그러져 겹치는 현상 원천 차단 */
+
+@media (max-width:1599px){
+  .um-brand-tag{display:none}
+  .um-nav{gap:clamp(10px,1.2vw,18px)}
+}
+@media (max-width:1279px){
+  .um-chip-ver{display:none}
+  .um-nav-btn{font-size:13px;padding:20px 0}
+}
+@media (max-width:1119px){
+  .um-head-right .um-icon-btn:not(.um-burger){display:none}
+  .um-nav{gap:12px}
+  .um-nav-btn{font-size:12.5px;padding:20px 0;gap:5px}
+}
+@media (min-width:1600px){
+  .um-brand-tag{display:block}
 }

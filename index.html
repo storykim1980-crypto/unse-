@@ -9,7 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <!-- ⚠️ 배포할 때마다 아래 APP_VERSION 값만 새 숫자로 바꾸면 모든 기기가 새 파일을 강제 로드합니다 -->
-    <script>window.APP_VERSION = "20261013-1500";</script>
+    <script>window.APP_VERSION = "20261013-1900";</script>
 
     <!-- ===================== 기본 SEO ===================== -->
     <title>운세방앗간 | 100% 무료 사주·운세·궁합·작명 30대 그랜드 명리 철학원</title>
@@ -153,8 +153,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://unpkg.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20261013-1500">
-    <link rel="stylesheet" href="./css/redesign.css?v=20261013-1500">
+    <link rel="stylesheet" href="./css/style.css?v=20261013-1900">
+    <link rel="stylesheet" href="./css/redesign.css?v=20261013-1900">
     <!-- 아이콘 라이브러리: defer 로 렌더링 차단 없이 로드 (미로드 시 아이콘만 생략되고 기능은 정상) -->
     <script defer src="https://unpkg.com/lucide@0.294.0/dist/umd/lucide.min.js"
             onerror="window.__lucideFailed=true;console.warn('[운세방앗간] 아이콘 라이브러리 로드 실패 — 아이콘 없이 정상 동작합니다.')"></script>
@@ -260,9 +260,16 @@
                 </div>
 
                 <form id="saju-form" class="um-form" onsubmit="handleAnalyze(event)">
-                    <!-- 1. 성별 -->
+                    <!-- 1. 이름 (선택) -->
+                    <div class="um-field um-field-name">
+                        <label class="um-label" for="saju-name">1. 이름 <span class="um-mini">선택 · 리포트에 표기됩니다</span></label>
+                        <input type="text" id="saju-name" class="um-input" maxlength="20" autocomplete="off"
+                               placeholder="예: 김지훈  ·  미입력 시 ‘본인’으로 표기되며, 이름도 서버에 저장되지 않습니다">
+                    </div>
+
+                    <!-- 2. 성별 -->
                     <div class="um-field">
-                        <span class="um-label">1. 성별 선택</span>
+                        <span class="um-label">2. 성별 선택</span>
                         <div class="um-seg">
                             <label>
                                 <input type="radio" name="gender" value="M" checked>
@@ -277,7 +284,7 @@
 
                     <!-- 2. 양력 / 음력 -->
                     <div class="um-field">
-                        <span class="um-label">2. 양력 / 음력 <span class="um-mini">윤달 자동 판정</span></span>
+                        <span class="um-label">3. 양력 / 음력 <span class="um-mini">윤달 자동 판정</span></span>
                         <div class="um-seg">
                             <label>
                                 <input type="radio" name="calendar_type" value="solar" checked onchange="toggleLeapMonth()">
@@ -292,7 +299,7 @@
 
                     <!-- 3. 생년월일 -->
                     <div class="um-field um-field-date">
-                        <span class="um-label">3. 생년월일 (년 / 월 / 일)</span>
+                        <span class="um-label">4. 생년월일 (년 / 월 / 일)</span>
                         <div class="um-triple">
                             <select id="birth-year" class="um-select" aria-label="출생 연도" required></select>
                             <select id="birth-month" class="um-select" aria-label="출생 월" required></select>
@@ -307,7 +314,7 @@
 
                     <!-- 4. 출생 시간 -->
                     <div class="um-field um-field-time">
-                        <span class="um-label">4. 출생 시간 (12시진)
+                        <span class="um-label">5. 출생 시간 (12시진)
                             <label class="um-mini" style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;color:var(--tx-3)">
                                 <input type="checkbox" id="time-unknown" onchange="toggleTimeInput()" style="accent-color:#E2B857">
                                 출생 시간 모름 (삼주 분석)
@@ -365,7 +372,7 @@
 <section id="result-section" class="hidden max-w-7xl mx-auto px-4 space-y-8 animate-fade-in clear-both hall-destiny-active">
         <!-- 리포트 상단 툴바 (인쇄 · 요약 복사 · 목차) -->
         <div class="um-report-bar no-print">
-            <span class="um-report-bar-title"><span aria-hidden="true">📑</span> 정밀 리포트 열람 중</span>
+            <span class="um-report-bar-title"><span aria-hidden="true">📑</span><span id="um-report-user"></span> 정밀 리포트 열람 중</span>
             <div class="um-report-bar-actions">
                 <button class="um-btn-ghost" type="button" onclick="copySummaryToClipboard()">📋 사주 요약 복사</button>
                 <button class="um-btn-ghost" type="button" onclick="window.print()">🖨️ 인쇄 · PDF 저장</button>
@@ -2150,7 +2157,7 @@
         <p class="text-xs mt-3 animate-pulse" style="color:var(--gold-lt);font-family:var(--f-serif)">나만의 운명 설계도를 실시간 해독 중입니다...</p>
     </div>
 
-    <script src="./js/app.js?v=20261013-1500" defer></script>
-    <script src="./js/redesign.js?v=20261013-1500" defer></script>
+    <script src="./js/app.js?v=20261013-1900" defer></script>
+    <script src="./js/redesign.js?v=20261013-1900" defer></script>
 </body>
 </html>

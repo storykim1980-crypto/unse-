@@ -462,6 +462,10 @@
             renderLuckyNumMastery(ilGan); // 22. 행운 전화번호
             renderPetMastery(saju, ilJi); // 23. 반려동물 띠 궁합
             renderPastlifeMastery(saju, ilJi); // 24. 전생 카르마
+            /* [리뉴얼 패치] 아래 두 렌더 함수가 정의만 되고 호출되지 않아
+               29. 수호 신수 · 30. 천을귀인 탭의 핵심 내용이 비어 있던 문제 수정 */
+            if (typeof renderGuardianBeast === 'function') { renderGuardianBeast(saju); } // 29. 평생 수호 신수
+            if (typeof renderCheoneulGwiin === 'function') { renderCheoneulGwiin(saju, ilGan); } // 30. 천을귀인
             showBirthBlessing(); // 15. 탄생석/탄생화 자동 동기화
         }
 
