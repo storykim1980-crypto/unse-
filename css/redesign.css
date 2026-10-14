@@ -546,8 +546,8 @@ a{color:inherit}
 .um-footer-links{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12px;justify-content:center}
 .um-footer-links a{color:var(--tx-3);text-decoration:none;transition:color .2s}
 .um-footer-links a:hover{color:var(--gold-lt)}
-.um-disclaimer{font-size:11px;color:#6E7689;line-height:1.9;margin:18px 0 12px}
-.um-copy{font-size:11px;color:#5F6678;text-align:center}
+.um-disclaimer{font-size:11px;color:#828A9E;line-height:1.9;margin:18px 0 12px}
+.um-copy{font-size:11px;color:#7D8598;text-align:center}
 
 /* ---------- 12. 광고 슬롯 ---------- */
 .ad-slot{margin:38px auto!important;max-width:900px!important;padding:0 var(--pad)!important;text-align:center;min-height:90px}
@@ -1289,3 +1289,32 @@ a{color:inherit}
 @media (min-width:1600px){
   .um-brand-tag{display:block}
 }
+
+/* ==========================================================================
+   28. 접근성 · 키보드 포커스 링 복원
+   · style.css 의 `select,input,button{outline:none !important}` 리셋 때문에
+     마우스뿐 아니라 키보드(Tab) 로 이동할 때도 포커스 표시가 사라져 있었습니다.
+   · 키보드로 조작할 때(:focus-visible) 만 금색 링이 보이도록 되살립니다.
+     → 마우스 클릭 시에는 기존과 100% 동일하게 보입니다.
+   ========================================================================== */
+:where(a, button, [tabindex]):focus-visible{
+  outline:2px solid var(--gold) !important;
+  outline-offset:2px;
+}
+.um-mobile-nav button:focus-visible,
+.um-burger:focus-visible{
+  outline:2px solid var(--gold) !important;
+  outline-offset:-2px;
+}
+
+/* ==========================================================================
+   29. 접근성 · 색 대비 (WCAG AA)
+   · 하단 저작권/안내 문구가 3.34:1 · 4.21:1 로 기준(4.5:1) 미달이었습니다.
+     → 글자색만 아주 살짝 밝혀 5.2:1 · 5.5:1 로 보정 (배치·크기는 그대로)
+   · 상단 탭의 활성 알약(파란 배경) 글자가 4.39:1 이었습니다.
+     → 순백(#fff)으로 보정해 5.33:1 확보
+   ========================================================================== */
+.um-copy{color:#7D8598}
+.um-disclaimer{color:#828A9E}
+.plaza-menu-grid button.bg-purple-500,
+.plaza-menu-grid button.bg-purple-500 *{color:#fff!important}

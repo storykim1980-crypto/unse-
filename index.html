@@ -9,7 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <!-- ⚠️ 배포할 때마다 아래 APP_VERSION 값만 새 숫자로 바꾸면 모든 기기가 새 파일을 강제 로드합니다 -->
-    <script>window.APP_VERSION = "20261013-1900";</script>
+    <script>window.APP_VERSION = "20261014-0954";</script>
 
     <!-- ===================== 기본 SEO ===================== -->
     <title>운세방앗간 | 100% 무료 사주·운세·궁합·작명 30대 그랜드 명리 철학원</title>
@@ -152,9 +152,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://unpkg.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20261013-1900">
-    <link rel="stylesheet" href="./css/redesign.css?v=20261013-1900">
+    <!-- 웹폰트: 실제 사용하는 굵기만 요청 · 화면 그리기를 막지 않도록 비동기 로드 -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="./css/style.css?v=20261014-0954">
+    <link rel="stylesheet" href="./css/redesign.css?v=20261014-0954">
     <!-- 아이콘 라이브러리: defer 로 렌더링 차단 없이 로드 (미로드 시 아이콘만 생략되고 기능은 정상) -->
     <script defer src="https://unpkg.com/lucide@0.294.0/dist/umd/lucide.min.js"
             onerror="window.__lucideFailed=true;console.warn('[운세방앗간] 아이콘 라이브러리 로드 실패 — 아이콘 없이 정상 동작합니다.')"></script>
@@ -190,15 +193,15 @@
 
             <nav class="um-nav" aria-label="운세 대궐 메뉴">
                 <button class="um-nav-btn is-active" id="nav-temple-1" type="button"
-                        onclick="selectTemple(1)">🏛️ 선천 운명</button>
+                        onclick="goTemple(1)">🏛️ 선천 운명</button>
                 <button class="um-nav-btn" id="nav-temple-2" type="button"
-                        onclick="selectTemple(2)">💼 실전 사회</button>
+                        onclick="goTemple(2)">💼 실전 사회</button>
                 <button class="um-nav-btn" id="nav-temple-3" type="button"
-                        onclick="selectTemple(3)">🧘 현대 라이프</button>
+                        onclick="goTemple(3)">🧘 현대 라이프</button>
                 <button class="um-nav-btn" id="nav-temple-4" type="button"
-                        onclick="selectTemple(4)">🔮 동서양 신비</button>
+                        onclick="goTemple(4)">🔮 동서양 신비</button>
                 <button class="um-nav-btn" id="nav-lounge" type="button" onclick="scrollToSection('daily-lounge-section')">✨ 오늘의 운세</button>
-                <button class="um-nav-btn" type="button" onclick="scrollToSection('five-elements-section')">☯️ 오행/FAQ</button>
+                <button class="um-nav-btn" id="nav-five" type="button" onclick="scrollToSection('five-elements-section')">☯️ 오행/FAQ</button>
             </nav>
 
             <div class="um-head-right">
@@ -214,10 +217,10 @@
         </div>
 
         <div class="um-mobile-nav" id="um-mobile-nav">
-            <button type="button" onclick="selectTemple(1);toggleMobileNav()">🏛️ 선천 운명</button>
-            <button type="button" onclick="selectTemple(2);toggleMobileNav()">💼 실전 사회</button>
-            <button type="button" onclick="selectTemple(3);toggleMobileNav()">🧘 현대 라이프</button>
-            <button type="button" onclick="selectTemple(4);toggleMobileNav()">🔮 동서양 신비</button>
+            <button type="button" onclick="goTemple(1);toggleMobileNav()">🏛️ 선천 운명</button>
+            <button type="button" onclick="goTemple(2);toggleMobileNav()">💼 실전 사회</button>
+            <button type="button" onclick="goTemple(3);toggleMobileNav()">🧘 현대 라이프</button>
+            <button type="button" onclick="goTemple(4);toggleMobileNav()">🔮 동서양 신비</button>
             <button type="button" onclick="scrollToSection('daily-lounge-section');toggleMobileNav()">✨ 오늘의 운세</button>
             <button type="button" onclick="scrollToSection('five-elements-section');toggleMobileNav()">☯️ 오행/FAQ</button>
         </div>
@@ -852,7 +855,7 @@
             <div id="body-tab-naming" class="accordion-body p-5 sm:p-6 space-y-6">
                 <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-6 border-t-2 border-cyan-500">
                 <div class="border-b border-white/10 pb-4"><span class="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">성명학(姓名學) & 사주 조화 작명</span><h3 class="font-serif-kr text-2xl sm:text-3xl font-bold text-white mt-2 flex items-center gap-2"><i data-lucide="pen-tool" class="w-6 h-6 text-cyan-400"></i> 이름 + 사주 조화도 분석 & 개운 추천 한자 15선</h3><p class="text-xs sm:text-sm text-gray-400 mt-1">이름을 입력하시면 발음 오행과 사주 용신의 조화도를 채점하고 추천 한자를 제시합니다.</p></div>
-                <div class="bg-white/5 border border-cyan-500/30 rounded-2xl p-5 space-y-4"><h4 class="font-bold text-cyan-300 text-sm flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4"></i> 본인 이름 입력 (성 + 이름)</h4><div class="grid grid-cols-1 sm:grid-cols-3 gap-3"><div><label class="block text-xs text-gray-400 mb-1">성(姓) 한글</label><input type="text" id="name-sung" placeholder="예: 김, 이, 박" value="김" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"></div><div><label class="block text-xs text-gray-400 mb-1">이름(名) 한글</label><input type="text" id="name-given" placeholder="예: 지훈, 서연" value="지훈" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"></div><div class="flex items-end"><button type="button" onclick="analyzeNaming()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-lg flex items-center justify-center gap-2 transition"><i data-lucide="sparkles" class="w-4 h-4"></i><span>성명학 조화 감정</span></button></div></div></div>
+                <div class="bg-white/5 border border-cyan-500/30 rounded-2xl p-5 space-y-4"><h4 class="font-bold text-cyan-300 text-sm flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4"></i> 본인 이름 입력 (성 + 이름)</h4><div class="grid grid-cols-1 sm:grid-cols-3 gap-3"><div><label class="block text-xs text-gray-400 mb-1">성(姓) 한글</label><input type="text" id="name-sung" placeholder="예: 김, 이, 박" value="김" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none" aria-label="성(姓) 한글"></div><div><label class="block text-xs text-gray-400 mb-1">이름(名) 한글</label><input type="text" id="name-given" placeholder="예: 지훈, 서연" value="지훈" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none" aria-label="이름(名) 한글"></div><div class="flex items-end"><button type="button" onclick="analyzeNaming()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-lg flex items-center justify-center gap-2 transition"><i data-lucide="sparkles" class="w-4 h-4"></i><span>성명학 조화 감정</span></button></div></div></div>
                 <div id="naming-result-box" class="hidden space-y-6 pt-2 animate-fade-in">
                     <div class="bg-gradient-to-r from-cyan-500/20 via-blue-500/10 to-cyan-500/20 border-2 border-cyan-500 rounded-2xl p-6 text-center space-y-2"><span class="text-xs font-bold px-3 py-1 bg-cyan-500 text-mystic-900 rounded-full uppercase">성명 조화 점수</span><div class="text-4xl sm:text-5xl font-serif-kr font-extrabold text-white pt-1" id="naming-score-num">92점 / 100점</div><div class="text-lg font-bold text-cyan-300" id="naming-score-stars">⭐⭐⭐⭐⭐ (사주 용신을 완벽히 보완하는 길명)</div><p class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto pt-1" id="naming-summary-desc"></p></div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-white/5 rounded-2xl p-5 border border-white/10 space-y-3"><h5 class="font-bold text-amber-300 text-base flex items-center gap-1.5"><i data-lucide="check-circle" class="w-5 h-5"></i> 발음 오행 분석</h5><p class="text-xs sm:text-sm text-gray-300 leading-relaxed" id="naming-sound-analysis"></p></div><div class="bg-white/5 rounded-2xl p-5 border border-white/10 space-y-3"><h5 class="font-bold text-emerald-300 text-base flex items-center gap-1.5"><i data-lucide="sparkles" class="w-5 h-5"></i> 개운 작명 비결</h5><p class="text-xs sm:text-sm text-gray-300 leading-relaxed" id="naming-advice-desc"></p></div></div>
@@ -879,25 +882,25 @@
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         <div>
                             <label class="block text-xs text-gray-400 mb-1">상대방 연도</label>
-                            <select id="partner-year" class="w-full bg-mystic-900 border border-pink-500/30 rounded-xl px-2.5 py-3 text-xs sm:text-sm text-white font-medium focus:border-pink-400 focus:outline-none">
+                            <select id="partner-year" class="w-full bg-mystic-900 border border-pink-500/30 rounded-xl px-2.5 py-3 text-xs sm:text-sm text-white font-medium focus:border-pink-400 focus:outline-none" aria-label="상대방 출생 연도">
                                 <option value="">연도 선택</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-xs text-gray-400 mb-1">상대방 월</label>
-                            <select id="partner-month" class="w-full bg-mystic-900 border border-pink-500/30 rounded-xl px-2.5 py-3 text-xs sm:text-sm text-white font-medium focus:border-pink-400 focus:outline-none">
+                            <select id="partner-month" class="w-full bg-mystic-900 border border-pink-500/30 rounded-xl px-2.5 py-3 text-xs sm:text-sm text-white font-medium focus:border-pink-400 focus:outline-none" aria-label="상대방 출생 월">
                                 <option value="">월 선택</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-xs text-gray-400 mb-1">상대방 일</label>
-                            <select id="partner-day" class="w-full bg-mystic-900 border border-pink-500/30 rounded-xl px-2.5 py-3 text-xs sm:text-sm text-white font-medium focus:border-pink-400 focus:outline-none">
+                            <select id="partner-day" class="w-full bg-mystic-900 border border-pink-500/30 rounded-xl px-2.5 py-3 text-xs sm:text-sm text-white font-medium focus:border-pink-400 focus:outline-none" aria-label="상대방 출생 일">
                                 <option value="">일 선택</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-xs text-gray-400 mb-1">달력 & 성별</label>
-                            <select id="partner-gender-cal" class="w-full bg-mystic-900 border border-pink-500/30 rounded-xl px-2.5 py-3 text-xs sm:text-sm text-white font-medium focus:border-pink-400 focus:outline-none">
+                            <select id="partner-gender-cal" class="w-full bg-mystic-900 border border-pink-500/30 rounded-xl px-2.5 py-3 text-xs sm:text-sm text-white font-medium focus:border-pink-400 focus:outline-none" aria-label="상대방 달력 및 성별">
                                 <option value="M_solar">👨 남성 (양력)</option>
                                 <option value="F_solar">👩 여성 (양력)</option>
                                 <option value="M_lunar">👨 남성 (음력)</option>
@@ -1164,7 +1167,7 @@
                 <div class="border-b border-white/10 pb-4"><span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">숫자 오행 파동학</span><h3 class="font-serif-kr text-2xl sm:text-3xl font-bold text-white mt-2 flex items-center gap-2"><i data-lucide="hash" class="w-6 h-6 text-emerald-400"></i> 평생 행운을 부르는 맞춤 전화번호 & 차량번호 10선</h3><p class="text-xs sm:text-sm text-gray-400 mt-1">내 사주의 핵심 용신 숫자를 조합하여 부와 인덕을 끌어당기는 황금 번호 끝자리를 제시합니다.</p></div>
                 <div class="bg-white/5 border border-emerald-500/30 rounded-2xl p-5 space-y-4">
                     <h4 class="font-bold text-emerald-300 text-sm flex items-center gap-1.5"><i data-lucide="phone" class="w-4 h-4"></i> 현재 사용 중인 번호 4자리 감정</h4>
-                    <div class="flex gap-3 max-w-md"><input type="text" id="my-number-input" placeholder="예: 7788 또는 1234" maxlength="4" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"><button type="button" onclick="analyzeMyNumber()" class="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-mystic-900 font-extrabold text-xs transition min-w-max">번호 감정</button></div>
+                    <div class="flex gap-3 max-w-md"><input type="text" id="my-number-input" placeholder="예: 7788 또는 1234" maxlength="4" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none" aria-label="감정할 번호 4자리"><button type="button" onclick="analyzeMyNumber()" class="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-mystic-900 font-extrabold text-xs transition min-w-max">번호 감정</button></div>
                     <p class="text-xs text-amber-300 font-medium" id="my-number-result">감정 버튼을 누르시면 번호 오행 상성 점수가 출력됩니다.</p>
                 </div>
                 <div class="space-y-3"><h4 class="font-bold text-white text-base flex items-center gap-1.5"><i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i> 내 사주 용신 맞춤 행운의 황금 번호 10선</h4><div class="grid grid-cols-2 sm:grid-cols-5 gap-3" id="luckynum-grid"></div></div>
@@ -1357,7 +1360,7 @@
                     <p class="text-xs text-gray-400">사주 분석이 완료되면 마음을 차분히 가라앉히고 질문을 선택한 뒤, 아래 뒷면의 카드 중 한 장을 신중하게 터치해보세요.</p>
                     
                     <div class="pt-2">
-                        <select id="tarot-category" class="w-full sm:w-auto bg-mystic-900 border border-purple-500/30 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-purple-300 font-bold focus:outline-none cursor-pointer">
+                        <select id="tarot-category" class="w-full sm:w-auto bg-mystic-900 border border-purple-500/30 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-purple-300 font-bold focus:outline-none cursor-pointer" aria-label="타로 질문 선택">
                             <option value="total">🍀 오늘의 종합적인 하루 흐름 (총운)</option>
                             <option value="love">💖 오늘 사랑과 인연의 흐름 (연애/대인운)</option>
                             <option value="money">💰 오늘 지갑과 비즈니스의 흐름 (금전/성공운)</option>
@@ -1485,13 +1488,13 @@
                     <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
                         <span class="text-xs font-bold text-pink-400 block">👤 나의 성격 &amp; 혈액형</span>
                         <div class="grid grid-cols-2 gap-2">
-                            <select id="my-mbti" class="bg-mystic-900 border border-white/10 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500 cursor-pointer">
+                            <select id="my-mbti" class="bg-mystic-900 border border-white/10 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500 cursor-pointer" aria-label="나의 MBTI">
                                 <option value="INFP">인프피 (INFP) 열정가</option><option value="INFJ">인프제 (INFJ) 옹호자</option><option value="ENFP">엔프피 (ENFP) 활동가</option><option value="ENFJ">엔프제 (ENFJ) 선도자</option>
                                 <option value="INTJ">인티제 (INTJ) 전략가</option><option value="ENTJ">엔티제 (ENTJ) 지도자</option><option value="INTP">인팁 (INTP) 사색가</option><option value="ENTP">엔팁 (ENTP) 변론가</option>
                                 <option value="ISFP">잇프피 (ISFP) 예술가</option><option value="ISFJ">잇프제 (ISFJ) 수호자</option><option value="ESFP">엣프피 (ESFP) 연예인</option><option value="ESFJ">엣프제 (ESFJ) 사교가</option>
                                 <option value="ISTP">잇팁 (ISTP) 장인</option><option value="ESTP">엣팁 (ESTP) 사업가</option><option value="ISTJ">잇티제 (ISTJ) 현실주의자</option><option value="ESTJ">엣티제 (ESTJ) 관리자</option>
                             </select>
-                            <select id="my-blood" class="bg-mystic-900 border border-white/10 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500 cursor-pointer">
+                            <select id="my-blood" class="bg-mystic-900 border border-white/10 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500 cursor-pointer" aria-label="나의 혈액형">
                                 <option value="A">A형 (신중)</option><option value="B">B형 (자유)</option><option value="O">O형 (친화)</option><option value="AB">AB형 (개성)</option>
                             </select>
                         </div>
@@ -1500,13 +1503,13 @@
                     <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
                         <span class="text-xs font-bold text-purple-400 block">👤 상대방 성격 &amp; 혈액형</span>
                         <div class="grid grid-cols-2 gap-2">
-                            <select id="partner-mbti" class="bg-mystic-900 border border-white/10 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer">
+                            <select id="partner-mbti" class="bg-mystic-900 border border-white/10 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer" aria-label="상대방 MBTI">
                                 <option value="ENFP">엔프피 (ENFP) 활동가</option><option value="INFP">인프피 (INFP) 열정가</option><option value="INFJ">인프제 (INFJ) 옹호자</option><option value="ENFJ">엔프제 (ENFJ) 선도자</option>
                                 <option value="INTJ">인티제 (INTJ) 전략가</option><option value="ENTJ">엔티제 (ENTJ) 지도자</option><option value="INTP">인팁 (INTP) 사색가</option><option value="ENTP">엔팁 (ENTP) 변론가</option>
                                 <option value="ISFP">잇프피 (ISFP) 예술가</option><option value="ISFJ">잇프제 (ISFJ) 수호자</option><option value="ESFP">엣프피 (ESFP) 연예인</option><option value="ESFJ">엣프제 (ESFJ) 사교가</option>
                                 <option value="ISTP">잇팁 (ISTP) 장인</option><option value="ESTP">엣팁 (ESTP) 사업가</option><option value="ISTJ">잇티제 (ISTJ) 현실주의자</option><option value="ESTJ">엣티제 (ESTJ) 관리자</option>
                             </select>
-                            <select id="partner-blood" class="bg-mystic-900 border border-white/10 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer">
+                            <select id="partner-blood" class="bg-mystic-900 border border-white/10 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer" aria-label="상대방 혈액형">
                                 <option value="O">O형 (친화)</option><option value="A">A형 (신중)</option><option value="B">B형 (자유)</option><option value="AB">AB형 (개성)</option>
                             </select>
                         </div>
@@ -1541,11 +1544,11 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
                     <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
                         <span class="text-xs font-bold text-cyan-400 block">👤 전생 주인공 한글 이름</span>
-                        <input type="text" id="past-game-name" placeholder="본인의 한글 이름 성 포함" value="김지훈" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none">
+                        <input type="text" id="past-game-name" placeholder="본인의 한글 이름 성 포함" value="김지훈" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none" aria-label="전생 주인공 한글 이름">
                     </div>
                     <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
                         <span class="text-xs font-bold text-cyan-400 block">🗝️ 가장 알고 싶은 전생 인연 테마</span>
-                        <select id="past-game-category" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none cursor-pointer">
+                        <select id="past-game-category" class="w-full bg-mystic-900 border border-white/20 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none cursor-pointer" aria-label="전생 인연 테마">
                             <option value="destiny">🍂 내 전생의 정체와 영혼 성격 (신분/직업)</option>
                             <option value="love">💕 내 전생의 애달픈 사랑과 전생 연인 (로맨스)</option>
                             <option value="karma">🪙 내 전생의 지은 업보와 현생 재물 복록 (카르마)</option>
@@ -1577,7 +1580,7 @@
                     <p class="text-xs text-gray-400">내가 태어난 달을 선택하여 나의 수호꽃과 수호석에 깃든 귀한 상징과 오늘의 행운 조언을 확인해 보세요.</p>
                     
                     <div class="pt-2 max-w-[200px] mx-auto">
-                        <select id="birth-month-select" onchange="showBirthBlessing()" class="w-full bg-mystic-900 border border-amber-500/30 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-amber-300 font-bold focus:outline-none cursor-pointer">
+                        <select id="birth-month-select" onchange="showBirthBlessing()" class="w-full bg-mystic-900 border border-amber-500/30 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-amber-300 font-bold focus:outline-none cursor-pointer" aria-label="태어난 달 선택">
                             <option value="1">🌸 1월의 선물</option><option value="2">🌸 2월의 선물</option><option value="3">🌸 3월의 선물</option><option value="4">🌸 4월의 선물</option>
                             <option value="5">🌸 5월의 선물</option><option value="6">🌸 6월의 선물</option><option value="7">🌸 7월의 선물</option><option value="8">🌸 8월의 선물</option>
                             <option value="9">🌸 9월의 선물</option><option value="10">🌸 10월의 선물</option><option value="11">🌸 11월 of의 선물</option><option value="12">🌸 12월의 선물</option>
@@ -2107,7 +2110,7 @@
 
     <!-- ============================== JS 엔진 DOM 보조 스텁 (기능 유지용 · 화면 미노출) ============================== -->
     <div class="hidden" aria-hidden="true">
-        <select id="sidebar-ilju-select"></select>
+        <select id="sidebar-ilju-select" aria-label="일주(日柱) 선택"></select>
         <div id="sidebar-ilju-result"></div>
         <p id="sidebar-ilju-title"></p>
         <p id="sidebar-ilju-desc"></p>
@@ -2157,7 +2160,7 @@
         <p class="text-xs mt-3 animate-pulse" style="color:var(--gold-lt);font-family:var(--f-serif)">나만의 운명 설계도를 실시간 해독 중입니다...</p>
     </div>
 
-    <script src="./js/app.js?v=20261013-1900" defer></script>
-    <script src="./js/redesign.js?v=20261013-1900" defer></script>
+    <script src="./js/app.js?v=20261014-0954" defer></script>
+    <script src="./js/redesign.js?v=20261014-0954" defer></script>
 </body>
 </html>

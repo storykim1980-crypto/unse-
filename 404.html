@@ -12,9 +12,12 @@
     <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20261013-1900">
-    <link rel="stylesheet" href="./css/redesign.css?v=20261013-1900">
+    <!-- 웹폰트: 실제 사용하는 굵기만 요청 · 화면 그리기를 막지 않도록 비동기 로드 -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="./css/style.css?v=20261014-0954">
+    <link rel="stylesheet" href="./css/redesign.css?v=20261014-0954">
 </head>
 <body>
     <header class="um-header">

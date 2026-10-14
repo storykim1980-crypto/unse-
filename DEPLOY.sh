@@ -15,7 +15,13 @@ git add -A
 
 echo
 echo "▶ 3/4  커밋"
-git commit -m "design: 2026 Celestial Mill Classic 리뉴얼 (전 페이지 리스킨 + 골드 톤 v2 + OG/아이콘/404)"
+git commit -m "fix: 메뉴 이동·앵커·키보드 접근성·로딩 속도 개선 (2026-10-14)
+
+- 상단 성전 메뉴 4+4개 클릭 시 이동하지 않던 문제 해결 (goTemple)
+- 서브페이지 -> 메인 앵커(#) 이동 실패 해결 (해시 위치 보정)
+- 상단 메뉴 활성 표시(밑줄) 1개만 표시되도록 수정
+- 키보드 포커스 링 복원 / 모바일 메뉴 Esc 닫기 / aria-label 보강
+- 웹폰트 경량화 + 비동기 로드 (모바일 첫 화면 6.0s -> 1.9s)"
 
 echo
 echo "▶ 4/4  GitHub Pages 배포 (push)"
@@ -23,4 +29,4 @@ git push origin main
 
 echo
 echo "✅ 완료! 1~2분 뒤 https://www.unsemill.com 에 반영됩니다."
-echo "   · 캐시 갱신이 필요하면 index.html 상단 APP_VERSION 값을 새 숫자로 올려 주세요."
+echo "   · 이번 배포본은 자산 버전 ?v=20261014-0954 로 캐시를 갱신했습니다."

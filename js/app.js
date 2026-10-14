@@ -1974,8 +1974,11 @@ function selectSajuMenu(tabId) {
     if (window.lucide && typeof lucide !== 'undefined') { lucide.createIcons(); }
 
     // 6. 결과 위치로 화면을 스무스하게 정렬 워프!
+    //    (결과지가 실제로 노출된 경우에만. 숨김 상태에서 호출되면 보이지도 않는
+    //     요소의 위치를 '현재 위치 - 70px' 로 계산해 엉뚱하게 맨 위로 되돌리는 문제가 있었습니다.)
     if (main) {
         setTimeout(() => {
+            if (main.classList.contains('hidden')) return;   /* 숨겨진 상태면 정렬하지 않음 */
             const yOffset = -70;
             const y = main.getBoundingClientRect().top + window.pageYOffset + yOffset;
             window.scrollTo({ top: y, behavior: 'smooth' });
